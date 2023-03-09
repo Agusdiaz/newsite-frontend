@@ -1,0 +1,21 @@
+.filledButton {
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    border-style: none;
+    color: white;
+    cursor: pointer;
+
+    background: linear-gradient(to left, var(--blueGrotto) 50%, var(--blueGreen) 50%) right;
+    background-size: 200%;
+    transition: .3s ease-out;
+}
+
+.filledButton:hover:not([disabled]) {
+    background-position: left;
+}
+
+.filledButton:disabled,
+.filledButton[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}

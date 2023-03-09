@@ -1,0 +1,20 @@
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+
+    &__box {
+        accent-color: var(--blueGrotto);
+        margin-right: 0.625rem;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    &__title {
+        margin-right: 6px;
+        color: var(--text-color);
+    }
+
+    &__title--active {
+        color: var(--text-color);
+    }
+}

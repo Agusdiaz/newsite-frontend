@@ -1,0 +1,20 @@
+.emptyButton {
+    font-size: 1rem;
+    border-radius: 0.375rem;
+    border: 0.125rem solid var(--blueGrotto);
+    background-color: var(--background-color-container);
+    color: var(--blueGrotto);
+    cursor: pointer;
+    transition: .3s ease-out;
+}
+
+.emptyButton:hover:not([disabled]) {
+    color: var(--blueGreen);
+    border-color: var(--blueGreen);
+}
+
+.emptyButton:disabled,
+.emptyButton[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
