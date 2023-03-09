@@ -1,12 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
 //global colors palette
-:root {}
+:root {
+    --shadow-color: #C6C6C6;
+    --input-background-color: #E8E4E4;
+    --lightGrey: #9D9D9D;
+    --darkGrey: #333333;
+    --navyBlue: #05445E;
+    --blueGrotto: #189AB4;
+    --blueGreen: #75E6DA;
+    --babyBlue: #D4F1F4;
+    --yellowGreen: #ECF87F;
+    --limeGreen: #81B622;
+}
 
 //style for different themes
-body[data-theme="light"] {}
+body[data-theme="light"] {
+    --background-color-container: #FFFFFF;
+    --text-color: var(--darkGrey);
+    --svg-color: #000000;
+}
 
-body[data-theme="dark"] {}
+body[data-theme="dark"] {
+    --background-color-container: var(--darkGrey);
+    --text-color: #FFFFFF;
+    --svg-color: #FFFFFF;
+}
 
 *,
 *::before,
@@ -22,6 +41,40 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+code,
+input {
     font-family: 'Poppins', sans-serif;
+}
+
+.layout-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.layout-container--blurOn {
+    @extend .layout-container;
+    z-index: -1;
+    filter: blur(8px);
+}
+
+::-webkit-scrollbar {
+    width: 0.4rem;
+    background-color: var(--input-background-color);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--input-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--shadow-color);
+    border-radius: 0.1875rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--lightGrey);
 }

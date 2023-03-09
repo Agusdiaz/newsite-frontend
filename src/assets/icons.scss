@@ -1,0 +1,10 @@
+.svgContainer {
+    fill: var(--svg-color);
+    stroke: var(--svg-color);
+    cursor: pointer;
+}
+
+.svgContainer:hover {
+    stroke: var(--blueGrotto);
+    fill: var(--blueGrotto);
+}
