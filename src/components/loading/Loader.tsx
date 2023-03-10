@@ -1,3 +1,4 @@
+import React from "react";
 import "./loader.scss";
 
 const Loader = () => {
@@ -10,7 +11,7 @@ const Loader = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle
-        class="loader-container__path"
+        className="loader-container__path"
         fill="none"
         stroke-width="6"
         stroke-linecap="round"
