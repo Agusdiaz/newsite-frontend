@@ -21,7 +21,7 @@ const Modal = (props: {
       <p className="modal-container__title">{title}</p>
       <p className="modal-container__subtitle">{subtitle}</p>
       <div className="modal-container__buttons-container">
-        {firstButtonObject !== undefined &&
+        {firstButtonObject &&
           firstButtonObject.type === "filled" ? (
           <ButtonFilled
             buttonProps={{
@@ -33,7 +33,7 @@ const Modal = (props: {
 
           />
         ) : (
-          firstButtonObject !== undefined &&
+          firstButtonObject &&
           firstButtonObject.type === "empty" && (
             <ButtonEmpty
               buttonProps={{
@@ -45,8 +45,8 @@ const Modal = (props: {
             />
           )
         )}
-        {secondButtonObject !== undefined && <br />}
-        {secondButtonObject !== undefined &&
+        {secondButtonObject && <br />}
+        {secondButtonObject &&
           secondButtonObject.type === "filled" ? (
           <ButtonFilled
             buttonProps={{

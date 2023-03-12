@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 export type InputType = {
   name: string;
   type:
@@ -23,5 +25,8 @@ export type InputType = {
     | "time"
     | "url"
     | "week";
+  handleInput: React.Dispatch<SetStateAction<string>>;
+  showError?: boolean;
+  errorMessage?: string;
   isRequired?: boolean;
 };

@@ -1,14 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import ScreenProvider from "./context/screenContext";
+
 /// IMPORT LAYOUT
 
 /// IMPORT VIEWS
 import Login from "./views/Login/Login";
 
 /// IMPORT Context providers
-
-const isAuthenticated = false;
+import ScreenProvider from "./context/screenContext";
 
 const randomImages = [
   { path: "mountains.jpg", alt: "Mountains pic" },
@@ -21,12 +20,13 @@ const randomImages = [
 const selectedImage = randomImages[Math.floor(Math.random() * 6)];
 
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <ScreenProvider>
       {isAuthenticated ? (
         <div>Main</div>
       ) : (
-        <Login imagePath={selectedImage.path} imageAlt={selectedImage.alt} />
+        <Login imagePath={selectedImage.path} imageAlt={selectedImage.alt} setAuthenticated={setIsAuthenticated} />
       )}
     </ScreenProvider>
   );

@@ -8,7 +8,8 @@
         color: var(--text-color);
     }
 
-    &__box {
+    &__box,
+    &__box--error {
         height: 2.5rem;
         background-color: var(--input-background-color);
         border-style: none;
@@ -21,5 +22,18 @@
         outline: none;
         border: 1px solid var(--blueGrotto);
         box-shadow: 0 0 5px var(--shadow-color);
+    }
+
+    &__box--error:focus {
+        outline: none;
+        border: 3px solid var(--redErrorHover);
+        box-shadow: 0 0 5px var(--shadow-color);
+    }
+
+    &__errorMessage {
+        color: var(--redErrorHover);
+        font-size: 0.8rem;
+        margin: 0.3rem 0 0.3rem 1rem;
+        height: 1rem;
     }
 }

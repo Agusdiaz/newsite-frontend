@@ -1,18 +1,16 @@
 import React from "react";
-import { useState } from "react";
 import { CheckboxType } from "../../../utils/interfaces/CheckboxTypes";
 import "./checkbox.scss";
 
 const Checkbox = (props: { checkboxProps: CheckboxType }) => {
-  const { name } = props.checkboxProps;
-  const [isChecked, setIsChecked] = useState(false);
+  const { name, isChecked, handleIsChecked } = props.checkboxProps;
 
   return (
     <label className="checkboxLabel">
       <input
         type="checkbox"
         onChange={() => {
-          setIsChecked(!isChecked);
+          handleIsChecked(!isChecked);
         }}
         className="checkboxLabel__box"
       />
