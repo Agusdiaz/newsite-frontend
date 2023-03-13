@@ -128,7 +128,7 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
               <Input
                 inputProps={{
                   name: "EMAIL",
-                  type: "text",
+                  type: "email",
                   isRequired: true,
                   handleInput: setUserEmail,
                   showError: showEmailError,

@@ -8,3 +8,13 @@
     stroke: var(--blueGrotto);
     fill: var(--blueGrotto);
 }
+
+#email-svg {
+    stroke: var(--darkGrey);
+}
+
+#open-eye-svg,
+#close-eye-svg {
+    stroke: var(--darkGrey);
+    cursor: pointer;
+}
