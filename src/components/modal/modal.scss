@@ -15,6 +15,10 @@
     z-index: 1;
     background-color: var(--background-color-container);
 
+    &__icon {
+        margin-bottom: 0.5rem;
+    }
+
     &__title {
         font-size: 1.5rem;
         font-weight: 500;
@@ -52,10 +56,6 @@
 @media only screen and (max-width: 768px) {
     .modal-container {
 
-        &__title {}
-
-        &__subtitle {}
-
         &__buttons-container {
             flex-direction: column;
 
@@ -67,6 +67,30 @@
             .emptyButton {
                 height: 3rem;
                 width: 90%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .modal-container {
+
+        &__title {
+            font-size: 1rem;
+        }
+
+        &__subtitle {
+            font-size: 0.7rem;
+        }
+
+        &__buttons-container {
+
+            .filledButton {
+                font-size: 0.8rem;
+            }
+
+            .emptyButton {
+                font-size: 0.8rem;
             }
         }
     }
