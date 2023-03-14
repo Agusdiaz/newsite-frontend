@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
-/// IMPORT LAYOUT
+import GeneralLayout from "./views/Layout/GeneralLayout";
 
-/// IMPORT VIEWS
 import Login from "./views/Login/Login";
+import NavBar from "./views/NavBar/NavBar";
+import Home from "./views/Home/Home";
+import News from "./views/News/News";
+import About from "./views/About/About";
+import NotFound from "./views/NotFound/NotFound";
+import OutsideNotifications from "./views/OutsideNotification/OutsideNotification";
 
-/// IMPORT Context providers
 import ScreenProvider from "./context/screenContext";
 
 const randomImages = [
@@ -23,11 +27,26 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   return (
     <ScreenProvider>
-      {isAuthenticated ? (
-        <div>Main</div>
-      ) : (
-        <Login imagePath={selectedImage.path} imageAlt={selectedImage.alt} setAuthenticated={setIsAuthenticated} />
-      )}
+      <GeneralLayout>
+        {!isAuthenticated ? (
+          <>
+            <NavBar />
+            <Routes>
+              <Route path="/home" element={<Home />} key={1} />
+              <Route path="/news" element={<News />} key={2} />
+              <Route path="/about" element={<About />} key={3} />
+              <Route path="*" element={<NotFound />} key={4} />
+            </Routes>
+          </>
+        ) : (
+          <Login
+            imagePath={selectedImage.path}
+            imageAlt={selectedImage.alt}
+            setAuthenticated={setIsAuthenticated}
+          />
+        )}
+      </GeneralLayout>
+      <OutsideNotifications />
     </ScreenProvider>
   );
 };

@@ -4,12 +4,9 @@ import ButtonFilled from "../../components/common/button/ButtonFilled";
 import Checkbox from "../../components/common/button/Checkbox";
 import Input from "../../components/common/input/Input";
 import Link from "../../components/common/link/link";
-import Loader from "../../components/loading/Loader";
-import Modal from "../../components/modal/Modal";
 import { ScreenContext } from "../../context/screenContext";
 import { getUserInfoLogin } from "../../services/auth/authService";
 import {
-  ModalType,
   ModalError,
   ModalLoginFailed,
   ModalUnavailable,
@@ -17,27 +14,6 @@ import {
 import "./login.scss";
 
 const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
-  const [showModal, setShowModal] = useState(false);
-  const [modalValues, setModalValues] = useState<ModalType>({
-    title: "",
-    subtitle: "",
-    firstButtonObject: {
-      type: null,
-      title: null,
-      onClickFunction: () => {},
-      isDisabled: null,
-      color: null,
-    },
-    secondButtonObject: {
-      type: null,
-      title: null,
-      onClickFunction: () => {},
-      isDisabled: null,
-      color: null,
-    },
-    closeModal: () => {},
-  });
-  const [isLoading, setIsLoading] = useState(false);
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPasword] = useState("");
   const [disableLogin, setDisableLogin] = useState(true);
@@ -45,10 +21,8 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
   const [showPasswordError, setshowPasswordError] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
 
-  const { setTheme, nextTheme } = useContext(ScreenContext);
-
-  const loginContainerClass =
-    isLoading || showModal ? "layout-container--blurOn" : "layout-container";
+  const { setTheme, nextTheme, setShowLoader, setShowModal, setModalProps } =
+    useContext(ScreenContext);
 
   const validateEmail = (email) => {
     if (email.length === 0) return true;
@@ -80,139 +54,132 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
   };
 
   const handleLogin = async () => {
-    setIsLoading(true);
+    setShowLoader(true);
     const response = await getUserInfoLogin(userEmail, userPassword);
-    setIsLoading(false);
+    setShowLoader(false);
     if (response.isAuthenticated) {
-      console.log("aca");
       setTheme({ isTouched: true, theme: localStorage.getItem("theme") });
       setAuthenticated(true);
     } else if (!response.isAuthenticated && response.status) {
-      setModalValues((prevState) => ({
-        ...ModalLoginFailed,
-        firstButtonObject: {
-          ...ModalLoginFailed.firstButtonObject,
-          onClickFunction: () => {
+      setModalProps(() => ({
+        show: true,
+        modalProps: {
+          ...ModalLoginFailed,
+          firstButtonObject: {
+            ...ModalLoginFailed.firstButtonObject,
+            onClickFunction: () => {
+              setShowModal(false);
+            },
+          },
+          closeModal: () => {
             setShowModal(false);
           },
         },
-        closeModal: () => setShowModal(false),
       }));
       setShowModal(true);
     } else if (response.error) {
-      setModalValues((prevState) => ({
-        ...ModalError,
-        firstButtonObject: {
-          ...ModalError.firstButtonObject,
-          onClickFunction: () => {
+      setModalProps(() => ({
+        show: true,
+        modalProps: {
+          ...ModalError,
+          firstButtonObject: {
+            ...ModalError.firstButtonObject,
+            onClickFunction: () => {
+              setShowModal(false);
+            },
+          },
+          closeModal: () => {
             setShowModal(false);
           },
         },
-        closeModal: () => setShowModal(false),
       }));
       setShowModal(true);
     }
   };
 
+  const handleUnavailableModal = () => {
+    setModalProps(() => ({
+      ...ModalUnavailable,
+      firstButtonObject: {
+        ...ModalUnavailable.firstButtonObject,
+        onClickFunction: () => {
+          setShowModal(false);
+        },
+      },
+      closeModal: () => {
+        setShowModal(false);
+      },
+    }));
+    setShowModal(true);
+  };
+
   return (
-    <>
-      {isLoading && <Loader />}
-
-      {showModal && <Modal modalProps={modalValues} />}
-
-      <div className={loginContainerClass}>
-        <div className="login-container">
-          <div className="login-info">
-            <p className="login-info__title">Welcome back!</p>
-            <div className="login-info__inputs">
-              <Input
-                inputProps={{
-                  name: "EMAIL",
-                  type: "email",
-                  isRequired: true,
-                  handleInput: setUserEmail,
-                  showError: showEmailError,
-                  errorMessage: "The email is incorrect. Please verify.",
-                }}
-              />
-              <Input
-                inputProps={{
-                  name: "PASSWORD",
-                  type: "password",
-                  isRequired: true,
-                  handleInput: setUserPasword,
-                  showError: showPasswordError,
-                  errorMessage: "The password is too short.",
-                }}
-              />
-            </div>
-            <div className="login-info__subtitles">
-              <Checkbox
-                checkboxProps={{
-                  name: "Remember me?",
-                  isChecked: isChecked,
-                  handleIsChecked: setIsChecked,
-                }}
-              />
-              <Link
-                linkProps={{
-                  name: "Forgot password?",
-                  url: "#",
-                  target: "_self",
-                  onClickFunction: () => {
-                    setModalValues((prevState) => ({
-                      ...ModalUnavailable,
-                      firstButtonObject: {
-                        ...ModalUnavailable.firstButtonObject,
-                        onClickFunction: () => {
-                          setShowModal(false);
-                        },
-                      },
-                      closeModal: () => setShowModal(false),
-                    }));
-                    setShowModal(true);
-                  },
-                }}
-              />
-            </div>
-            <div className="login-info__buttons-container">
-              <ButtonFilled
-                buttonProps={{
-                  title: "LOGIN",
-                  // onClickFunction: () => handleTheme(),
-                  onClickFunction: () => handleLogin(),
-                  isDisabled: disableLogin,
-                }}
-              />
-              <ButtonEmpty
-                buttonProps={{
-                  title: "CREATE ACCOUNT",
-                  onClickFunction: () => {
-                    setModalValues((prevState) => ({
-                      ...ModalUnavailable,
-                      firstButtonObject: {
-                        ...ModalUnavailable.firstButtonObject,
-                        onClickFunction: () => {
-                          setShowModal(false);
-                        },
-                      },
-                      closeModal: () => setShowModal(false),
-                    }));
-                    setShowModal(true);
-                  },
-                  isDisabled: false,
-                }}
-              />
-            </div>
-          </div>
-          <img
-            className="login-pic"
-            src={require(`../../assets/${imagePath}`)}
-            alt={imageAlt}
+    <div className="login-container">
+      <div className="login-info">
+        <p className="login-info__title">Welcome back!</p>
+        <div className="login-info__inputs">
+          <Input
+            inputProps={{
+              name: "EMAIL",
+              type: "email",
+              isRequired: true,
+              handleInput: setUserEmail,
+              showError: showEmailError,
+              errorMessage: "The email is incorrect. Please verify.",
+            }}
+          />
+          <Input
+            inputProps={{
+              name: "PASSWORD",
+              type: "password",
+              isRequired: true,
+              handleInput: setUserPasword,
+              showError: showPasswordError,
+              errorMessage: "The password is too short.",
+            }}
+          />
+        </div>
+        <div className="login-info__subtitles">
+          <Checkbox
+            checkboxProps={{
+              name: "Remember me?",
+              isChecked: isChecked,
+              handleIsChecked: setIsChecked,
+            }}
+          />
+          <Link
+            linkProps={{
+              name: "Forgot password?",
+              url: "#",
+              target: "_self",
+              onClickFunction: handleUnavailableModal,
+            }}
+          />
+        </div>
+        <div className="login-info__buttons-container">
+          <ButtonFilled
+            buttonProps={{
+              title: "LOGIN",
+              // onClickFunction: () => handleTheme(),
+              onClickFunction: () => handleLogin(),
+              isDisabled: disableLogin,
+            }}
+          />
+          <ButtonEmpty
+            buttonProps={{
+              title: "CREATE ACCOUNT",
+              onClickFunction: handleUnavailableModal,
+              isDisabled: false,
+            }}
           />
         </div>
       </div>
-    </>
+      <img
+        className="login-pic"
+        src={require(`../../assets/${imagePath}`)}
+        alt={imageAlt}
+      />
+    </div>
   );
 };
 

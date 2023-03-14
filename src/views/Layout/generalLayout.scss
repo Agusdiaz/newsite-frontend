@@ -1,0 +1,15 @@
+.layout-container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column
+}
+
+.layout-container--blurOn {
+    @extend .layout-container;
+    z-index: -1;
+    filter: blur(8px);
+}

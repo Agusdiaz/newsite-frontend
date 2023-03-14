@@ -50,21 +50,6 @@ input {
     font-family: 'Poppins', sans-serif;
 }
 
-.layout-container {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.layout-container--blurOn {
-    @extend .layout-container;
-    z-index: -1;
-    filter: blur(8px);
-}
-
 ::-webkit-scrollbar {
     width: 0.4rem;
     background-color: var(--input-background-color);
