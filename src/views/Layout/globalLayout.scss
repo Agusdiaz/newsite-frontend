@@ -11,5 +11,6 @@
 .layout-container--blurOn {
     @extend .layout-container;
     z-index: -1;
+    pointer-events: none;
     filter: blur(8px);
 }
