@@ -1,12 +1,12 @@
-.svgContainer {
-    fill: var(--svg-color);
-    stroke: var(--svg-color);
+.theme-container {
+    fill: #FFFFFF;
+    stroke: #FFFFFF;
     cursor: pointer;
 }
 
-.svgContainer:hover {
-    stroke: var(--blueGrotto);
-    fill: var(--blueGrotto);
+.theme-container:hover {
+    stroke: var(--border-color-navbar);
+    fill: var(--border-color-navbar);
 }
 
 #email-svg {
@@ -17,4 +17,13 @@
 #close-eye-svg {
     stroke: var(--darkGrey);
     cursor: pointer;
+}
+
+.logout-container {
+    stroke: #FFFFFF;
+    cursor: pointer;
+}
+
+.logout-container:hover {
+    stroke: var(--border-color-navbar);
 }

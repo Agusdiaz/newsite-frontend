@@ -1,40 +1,75 @@
 .navbar-container {
     width: 100vw;
-    position: absolute;
-    top: 0;
-    height: fit-content;
     display: flex;
     align-items: flex-end;
     padding: 0;
     margin: 0;
-    border: 1px solid red;
+    background-color: var(--background-color-navbar);
 
     ul {
-        border: 1px solid blue;
         display: flex;
-        justify-content: space-evenly;
-        height: fit-content;
         width: 100%;
         padding: 0;
-        margin: 1.5rem 0 0 0;
+        margin: 1rem 0 0 0;
     }
 
     li {
-        border: 1px solid yellow;
         list-style: none;
-        padding: 0.2rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid transparent;
+        border-bottom: 2px solid var(--border-color-navbar);
+        transition: border 0.3s ease;
+    }
+
+    li:hover {
+        border-top: 2px solid var(--border-color-navbar);
+        border-left: 2px solid var(--border-color-navbar);
+        border-right: 2px solid var(--border-color-navbar);
+        border-bottom: 2px solid transparent;
     }
 
     &__link {
         text-decoration: none;
+        padding: 0.2rem 1.5rem;
+        color: #FFFFFF;
+        font-size: 1.2rem;
+    }
+
+    &__link--active {
+        @extend .navbar-container__link;
+        color: var(--border-color-navbar);
+        font-weight: 600;
+    }
+
+    li:last-child {
+        border: 0;
+        margin-left: auto;
+        padding: 0.2rem 1.5rem;
     }
 }
 
 @media only screen and (max-width: 768px) {
     .navbar-container {
-        top: auto;
-        bottom: 0;
+        &__link {
+            font-size: 1rem;
+        }
     }
 }
 
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width:400px) {
+    .navbar-container {
+        &__link {
+            padding: 0.2rem 0.7rem;
+        }
+
+        li:last-child {
+            padding: 0.2rem 1rem;
+        }
+
+        &__link {
+            font-size: 0.7rem;
+        }
+    }
+}

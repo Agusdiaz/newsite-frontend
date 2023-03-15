@@ -26,6 +26,7 @@ export type InputType = {
     | "url"
     | "week";
   handleInput: React.Dispatch<SetStateAction<string>>;
+  parentFunction?: any;
   showError?: boolean;
   errorMessage?: string;
   isRequired?: boolean;

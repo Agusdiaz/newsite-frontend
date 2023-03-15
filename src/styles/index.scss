@@ -4,7 +4,8 @@
 :root {
     --shadow-color: #C6C6C6;
     --input-background-color: #E8E4E4;
-    --lightGrey: #9D9D9D;
+    --lightGrey: #DDDDDB;
+    --mediumGrey: #9D9D9D;
     --darkGrey: #333333;
     --navyBlue: #05445E;
     --blueGrotto: #189AB4;
@@ -21,12 +22,18 @@
 //style for different themes
 body[data-theme="light"] {
     --background-color-container: #FFFFFF;
+    --background-color-viewContainer: #FFFFFF;
+    --background-color-navbar: var(--blueGrotto);
+    --border-color-navbar: var(--yellowGreen);
     --text-color: var(--darkGrey);
     --svg-color: #000000;
 }
 
 body[data-theme="dark"] {
     --background-color-container: var(--darkGrey);
+    --background-color-viewContainer: var(--lightGrey);
+    --background-color-navbar: var(--navyBlue);
+    --border-color-navbar: var(--yellowGreen);
     --text-color: #FFFFFF;
     --svg-color: #FFFFFF;
 }

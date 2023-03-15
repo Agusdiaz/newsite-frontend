@@ -8,10 +8,23 @@ import { InputType } from "../../../utils/interfaces/InputTypes";
 import "./input.scss";
 
 const Input = (props: { inputProps: InputType }) => {
-  const { name, isRequired, type, handleInput, showError, errorMessage } =
-    props.inputProps;
+  const {
+    name,
+    isRequired,
+    type,
+    handleInput,
+    showError,
+    errorMessage,
+    parentFunction,
+  } = props.inputProps;
 
   const [inputType, setInputType] = useState(type);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      if (parentFunction) parentFunction();
+    }
+  };
 
   const inputBoxContainerClass = showError
     ? "inputContainer__boxContainer__box--error"
@@ -56,6 +69,7 @@ const Input = (props: { inputProps: InputType }) => {
           type={inputType}
           required={isRequired}
           onChange={(e) => handleInput(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         {setIcon()}
       </div>

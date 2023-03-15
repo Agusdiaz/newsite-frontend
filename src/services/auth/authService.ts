@@ -22,6 +22,7 @@ export const getUserInfoLogin = async (
         localStorage.setItem("userEmail", response.data[0].email);
         localStorage.setItem("userName", response.data[0].name);
         localStorage.setItem("userAvatar", response.data[0].avatar);
+        localStorage.setItem("isAuthenticated", "true");
         localStorage.setItem("theme", response.data[0].theme);
         return { isAuthenticated: true, status: response.status, error: null };
       }

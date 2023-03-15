@@ -1,15 +1,16 @@
 import React from "react";
 import "./iconsSVG.scss";
 
-const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
+const LightTheme: any = ({ width, height, onClickFunction }) => {
   return (
     <svg
-      className="svgContainer"
+      className="theme-container"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       width={width ? width : "7rem"}
       height={height ? height : "7rem"}
       viewBox="0 0 1080 1080"
+      onClick={onClickFunction}
     >
       <rect x="0" y="0" width="100%" height="100%" fill="transparent"></rect>
       <g
@@ -48,7 +49,7 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
       >
         <path
           style={{
-            strokeWidth: 5,
+            strokeWidth: 1,
             strokeDasharray: "none",
             strokeLinecap: "butt",
             strokeDashoffset: 0,
@@ -100,7 +101,7 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
               vectorEffect="non-scaling-stroke"
               transform=" translate(-202.95, -49.3)"
               d="M 202.948 98.59 C 210.697 98.59 216.978 92.308 216.978 84.561 L 216.978 14.03 C 216.978 6.281999999999999 210.697 0.0009999999999994458 202.948 0.0009999999999994458 C 195.20000000000002 0.0009999999999994458 188.919 6.281999999999999 188.919 14.03 L 188.919 84.561 C 188.918 92.308 195.199 98.59 202.948 98.59 z"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </g>
           <g transform="matrix(1.97 0 0 1.97 214.14 -214.13)">
@@ -119,7 +120,7 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
               vectorEffect="non-scaling-stroke"
               transform=" translate(-311.59, -94.31)"
               d="M 286.659 133.274 C 290.24899999999997 133.274 293.846 131.904 296.585 129.164 L 346.45599999999996 79.28599999999999 C 351.92999999999995 73.80699999999999 351.92999999999995 64.92099999999999 346.448 59.447999999999986 C 340.969 53.96799999999999 332.091 53.96799999999999 326.60999999999996 59.447999999999986 L 276.739 109.32499999999999 C 271.25899999999996 114.80499999999999 271.25899999999996 123.68999999999998 276.739 129.164 C 279.479 131.904 283.069 133.274 286.659 133.274 z"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </g>
           <g transform="matrix(1.97 0 0 1.97 302.84 0.01)">
@@ -138,7 +139,7 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
               vectorEffect="non-scaling-stroke"
               transform=" translate(-356.6, -202.95)"
               d="M 391.866 188.919 L 321.335 188.92600000000002 C 313.58099999999996 188.92600000000002 307.30699999999996 195.20700000000002 307.30699999999996 202.955 C 307.30699999999996 210.703 313.58899999999994 216.984 321.335 216.984 L 391.866 216.977 C 399.614 216.977 405.897 210.697 405.897 202.948 C 405.897 195.2 399.614 188.919 391.866 188.919 z"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </g>
           <g transform="matrix(1.97 0 0 1.97 214.13 214.15)">
@@ -157,7 +158,7 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
               vectorEffect="non-scaling-stroke"
               transform=" translate(-311.59, -311.6)"
               d="M 296.571 276.748 C 291.091 271.269 282.21400000000006 271.269 276.733 276.748 C 271.252 282.227 271.253 291.113 276.733 296.587 L 326.61 346.457 C 329.35 349.197 332.94 350.566 336.53000000000003 350.566 C 340.12000000000006 350.566 343.716 349.19699999999995 346.456 346.457 C 351.93 340.978 351.93 332.092 346.44800000000004 326.61899999999997 L 296.571 276.748 z"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </g>
           <g transform="matrix(1.97 0 0 1.97 -0.01 302.84)">
@@ -176,7 +177,7 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
               vectorEffect="non-scaling-stroke"
               transform=" translate(-202.94, -356.6)"
               d="M 202.934 307.306 C 195.186 307.306 188.912 313.58799999999997 188.912 321.334 L 188.919 391.865 C 188.919 399.613 195.20000000000002 405.896 202.955 405.896 C 210.703 405.896 216.978 399.613 216.978 391.865 L 216.97 321.334 C 216.97 313.589 210.688 307.306 202.934 307.306 z"
-              stroke-linecap="round"
+              strokeLinecap="round"
             />
           </g>
           <g transform="matrix(1.97 0 0 1.97 -214.15 214.14)">
@@ -242,15 +243,16 @@ const LightTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
   );
 };
 
-const DarkTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
+const DarkTheme: any = ({ width, height, onClickFunction }) => {
   return (
     <svg
-      className="svgContainer"
+      className="theme-container"
       xmlns="http://www.w3.org/2000/svg"
       version="1.1"
       width={width ? width : "7rem"}
       height={height ? height : "7rem"}
       viewBox="0 0 1080 1080"
+      onClick={onClickFunction}
     >
       <g
         transform="matrix(1 0 0 1 540 540)"
@@ -284,7 +286,7 @@ const DarkTheme: React.FC<React.SVGProps<string>> = ({ width, height }) => {
       >
         <path
           style={{
-            strokeWidth: 5,
+            strokeWidth: 1,
             strokeDasharray: "none",
             strokeLinecap: "butt",
             strokeDashoffset: 0,
@@ -405,4 +407,32 @@ const PasswordCloseEye: any = ({ width, height, onClickFunction }) => {
   );
 };
 
-export { LightTheme, DarkTheme, Email, PasswordOpenEye, PasswordCloseEye };
+const LogOut: any = ({ width, height, onClickFunction }) => {
+  return (
+    <svg
+      className="logout-container"
+      width={width ? width : "2rem"}
+      height={height ? height : "2rem"}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={onClickFunction}
+    >
+      <path
+        d="M15 20H18C19.1046 20 20 19.1046 20 18M15 4H18C19.1046 4 20 4.89543 20 6V14M7 8L3 12L15 12M7 16L6 15"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+export {
+  LightTheme,
+  DarkTheme,
+  Email,
+  PasswordOpenEye,
+  PasswordCloseEye,
+  LogOut,
+};

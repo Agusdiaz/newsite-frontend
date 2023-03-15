@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { ScreenContext } from "../../context/screenContext";
-import "./generalLayout.scss";
+import "./globalLayout.scss";
 
-const GeneralLayout = ({ children }) => {
+const GlobalLayout = ({ children }) => {
   const { activeOnBlur, showLoader, showModal, setActiveOnBlur } =
     useContext(ScreenContext);
 
@@ -20,4 +20,4 @@ const GeneralLayout = ({ children }) => {
   );
 };
 
-export default GeneralLayout;
+export default GlobalLayout;

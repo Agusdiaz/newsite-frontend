@@ -52,3 +52,13 @@
         stroke-dashoffset: 0;
     }
 }
+
+.settingAnimated {
+    cursor: pointer;
+    stroke: #FFFFFF;
+}
+
+.settingAnimated:hover {
+    transform: rotate(35deg);
+    stroke: var(--border-color-navbar);
+}

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import GeneralLayout from "./views/Layout/GeneralLayout";
+import GlobalLayout from "./views/Layout/GlobalLayout";
+import ViewLayout from "./views/Layout/ViewLayout";
 
 import Login from "./views/Login/Login";
 import NavBar from "./views/NavBar/NavBar";
@@ -12,6 +13,7 @@ import NotFound from "./views/NotFound/NotFound";
 import OutsideNotifications from "./views/OutsideNotification/OutsideNotification";
 
 import ScreenProvider from "./context/screenContext";
+import UserProvider from "./context/userContext";
 
 const randomImages = [
   { path: "mountains.jpg", alt: "Mountains pic" },
@@ -24,30 +26,46 @@ const randomImages = [
 const selectedImage = randomImages[Math.floor(Math.random() * 6)];
 
 const App = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("isAuthenticated") === "true" ? true : false
+  );
+
   return (
-    <ScreenProvider>
-      <GeneralLayout>
-        {!isAuthenticated ? (
-          <>
-            <NavBar />
+    <UserProvider>
+      <ScreenProvider>
+        <GlobalLayout>
+          {isAuthenticated ? (
+            <>
+              <NavBar setIsAuthenticatedFromApp={setIsAuthenticated} />
+              <ViewLayout>
+                <Routes>
+                  <Route path="/home" element={<Home />} key={1} />
+                  <Route path="/news" element={<News />} key={2} />
+                  <Route path="/about" element={<About />} key={3} />
+                  <Route path="*" element={<NotFound />} key={4} />
+                </Routes>
+              </ViewLayout>
+            </>
+          ) : (
             <Routes>
-              <Route path="/home" element={<Home />} key={1} />
-              <Route path="/news" element={<News />} key={2} />
-              <Route path="/about" element={<About />} key={3} />
-              <Route path="*" element={<NotFound />} key={4} />
+              <Route
+                path="/login"
+                element={
+                  <Login
+                    imagePath={selectedImage.path}
+                    imageAlt={selectedImage.alt}
+                    setIsAuthenticatedFromApp={setIsAuthenticated}
+                  />
+                }
+                key={1}
+              />
+              <Route path="*" element={<NotFound />} key={2} />
             </Routes>
-          </>
-        ) : (
-          <Login
-            imagePath={selectedImage.path}
-            imageAlt={selectedImage.alt}
-            setAuthenticated={setIsAuthenticated}
-          />
-        )}
-      </GeneralLayout>
-      <OutsideNotifications />
-    </ScreenProvider>
+          )}
+        </GlobalLayout>
+        <OutsideNotifications />
+      </ScreenProvider>
+    </UserProvider>
   );
 };
 

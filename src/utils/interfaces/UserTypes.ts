@@ -1,0 +1,6 @@
+export type UserType = {
+  userId: number;
+  userEmail: string;
+  userName: string;
+  userAvatar: string;
+};

@@ -1,10 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ButtonEmpty from "../../components/common/button/ButtonEmpty";
 import ButtonFilled from "../../components/common/button/ButtonFilled";
 import Checkbox from "../../components/common/button/Checkbox";
+import ToggleSwitchTheme from "../../components/toggleTheme/ToggleSwitchTheme";
 import Input from "../../components/common/input/Input";
 import Link from "../../components/common/link/link";
 import { ScreenContext } from "../../context/screenContext";
+import { UserContext } from "../../context/userContext";
 import { getUserInfoLogin } from "../../services/auth/authService";
 import {
   ModalError,
@@ -13,16 +16,19 @@ import {
 } from "../../utils/interfaces/ModalTypes";
 import "./login.scss";
 
-const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
+const Login = ({ imagePath, imageAlt, setIsAuthenticatedFromApp }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPasword] = useState("");
   const [disableLogin, setDisableLogin] = useState(true);
   const [showEmailError, setshowEmailError] = useState(false);
   const [showPasswordError, setshowPasswordError] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const navigate = useNavigate();
 
-  const { setTheme, nextTheme, setShowLoader, setShowModal, setModalProps } =
+  const { setTheme, setShowLoader, setShowModal, setModalProps } =
     useContext(ScreenContext);
+
+  const { setIsAuthenticated, setUser } = useContext(UserContext);
 
   const validateEmail = (email) => {
     if (email.length === 0) return true;
@@ -48,22 +54,25 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
     else setDisableLogin(false);
   }, [userEmail, userPassword, showEmailError, showPasswordError]);
 
-  const handleTheme = () => {
-    setTheme({ isTouched: true, theme: nextTheme });
-    localStorage.setItem("theme", nextTheme);
-  };
-
   const handleLogin = async () => {
-    setShowLoader(true);
-    const response = await getUserInfoLogin(userEmail, userPassword);
-    setShowLoader(false);
-    if (response.isAuthenticated) {
-      setTheme({ isTouched: true, theme: localStorage.getItem("theme") });
-      setAuthenticated(true);
-    } else if (!response.isAuthenticated && response.status) {
-      setModalProps(() => ({
-        show: true,
-        modalProps: {
+    if (!disableLogin) {
+      setShowLoader(true);
+      const response = await getUserInfoLogin(userEmail, userPassword);
+      setShowLoader(false);
+      if (response.isAuthenticated) {
+        setTheme({ isTouched: true, theme: localStorage.getItem("theme") });
+        setUser((prevState) => ({
+          ...prevState,
+          userId: localStorage.getItem("userId"),
+          userEmail: localStorage.getItem("userEmail"),
+          userName: localStorage.getItem("userName"),
+          userAvatar: localStorage.getItem("userAvatar"),
+        }));
+        setIsAuthenticated(true);
+        setIsAuthenticatedFromApp(true);
+        navigate("/home");
+      } else if (!response.isAuthenticated && response.status) {
+        setModalProps(() => ({
           ...ModalLoginFailed,
           firstButtonObject: {
             ...ModalLoginFailed.firstButtonObject,
@@ -74,13 +83,10 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
           closeModal: () => {
             setShowModal(false);
           },
-        },
-      }));
-      setShowModal(true);
-    } else if (response.error) {
-      setModalProps(() => ({
-        show: true,
-        modalProps: {
+        }));
+        setShowModal(true);
+      } else if (response.error) {
+        setModalProps(() => ({
           ...ModalError,
           firstButtonObject: {
             ...ModalError.firstButtonObject,
@@ -91,9 +97,9 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
           closeModal: () => {
             setShowModal(false);
           },
-        },
-      }));
-      setShowModal(true);
+        }));
+        setShowModal(true);
+      }
     }
   };
 
@@ -126,6 +132,7 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
               handleInput: setUserEmail,
               showError: showEmailError,
               errorMessage: "The email is incorrect. Please verify.",
+              parentFunction: handleLogin,
             }}
           />
           <Input
@@ -136,6 +143,7 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
               handleInput: setUserPasword,
               showError: showPasswordError,
               errorMessage: "The password is too short.",
+              parentFunction: handleLogin,
             }}
           />
         </div>
@@ -160,7 +168,6 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
           <ButtonFilled
             buttonProps={{
               title: "LOGIN",
-              // onClickFunction: () => handleTheme(),
               onClickFunction: () => handleLogin(),
               isDisabled: disableLogin,
             }}
@@ -172,6 +179,10 @@ const Login = ({ imagePath, imageAlt, setAuthenticated }) => {
               isDisabled: false,
             }}
           />
+        </div>
+        <div className="login-info__toggle">
+          <ToggleSwitchTheme />
+          <p className="login-info__toggle__title">switch between themes</p>
         </div>
       </div>
       <img

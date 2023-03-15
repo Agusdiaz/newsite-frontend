@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { ModalType } from "../utils/interfaces/ModalTypes";
+import isMobileDevice from "../utils/isMobileDevice";
 export const ScreenContext = createContext(null);
 const { Provider } = ScreenContext;
 
@@ -11,6 +12,7 @@ const ScreenProvider = ({ children }) => {
   const nextTheme = theme.theme === "light" ? "dark" : "light";
 
   const [activeOnBlur, setActiveOnBlur] = useState(false);
+  const [isMobile] = useState(isMobileDevice());
   const [showLoader, setShowLoader] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalProps, setModalProps] = useState<ModalType>({
@@ -33,6 +35,23 @@ const ScreenProvider = ({ children }) => {
     closeModal: () => {},
   });
 
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
+
   useEffect(() => {
     document.body.dataset.theme = theme.theme;
   }, [theme]);
@@ -51,6 +70,8 @@ const ScreenProvider = ({ children }) => {
         showModal,
         setModalProps,
         modalProps,
+        isMobile,
+        windowSize,
       }}
     >
       {children}
