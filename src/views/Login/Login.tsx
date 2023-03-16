@@ -184,13 +184,11 @@ const Login = ({ imagePath, imageAlt }) => {
           <p className="login-info__toggle__title">switch between themes</p>
         </div>
       </div>
-      {
-        <img
-          className="login-pic"
-          src={require(`../../assets/${imagePath}`)}
-          alt={imageAlt}
-        />
-      }
+      <img
+        className="login-pic"
+        src={require(`../../assets/${imagePath}`)}
+        alt={imageAlt}
+      />
     </div>
   );
 };

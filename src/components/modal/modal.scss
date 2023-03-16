@@ -1,6 +1,7 @@
 .modal-container {
     width: 40%;
     height: fit-content;
+    position: absolute;
     box-shadow: 1px 1px 10px 5px var(--shadow-color);
     border-radius: 1rem;
     padding: 1rem;
@@ -8,12 +9,16 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
     background-color: var(--background-color-container);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     &__icon {
         margin-bottom: 0.5rem;
@@ -55,6 +60,7 @@
 
 @media only screen and (max-width: 768px) {
     .modal-container {
+        width: 70%;
 
         &__buttons-container {
             flex-direction: column;
