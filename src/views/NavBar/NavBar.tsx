@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { SettingAnimation } from "../../assets/iconAnimations";
 import { navBarRoutes } from "../../assets/navBarRoutes";
 import Tooltip from "../../components/tooltip/Tooltip";
 import { ScreenContext } from "../../context/screenContext";
 import "./navBar.scss";
 
-const NavBar = ({ setIsAuthenticatedFromApp }) => {
+const NavBar = () => {
   const { windowSize } = useContext(ScreenContext);
   const [iconSize, setIconSize] = useState("");
+  const location = useLocation();
 
   useEffect(() => {
     if (windowSize[0] <= 400) setIconSize("1.2rem");
@@ -23,7 +24,7 @@ const NavBar = ({ setIsAuthenticatedFromApp }) => {
           <li key={index}>
             <NavLink
               className={({ isActive }) =>
-                isActive
+                isActive || (location.pathname === "/" && el.name === "Home")
                   ? "navbar-container__link--active"
                   : "navbar-container__link"
               }
@@ -34,7 +35,7 @@ const NavBar = ({ setIsAuthenticatedFromApp }) => {
           </li>
         ))}
         <li key={3}>
-          <Tooltip setIsAuthenticatedFromApp={setIsAuthenticatedFromApp}>
+          <Tooltip>
             <SettingAnimation width={iconSize} height={iconSize} />
           </Tooltip>
         </li>

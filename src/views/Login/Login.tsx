@@ -16,7 +16,7 @@ import {
 } from "../../utils/interfaces/ModalTypes";
 import "./login.scss";
 
-const Login = ({ imagePath, imageAlt, setIsAuthenticatedFromApp }) => {
+const Login = ({ imagePath, imageAlt }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPasword] = useState("");
   const [disableLogin, setDisableLogin] = useState(true);
@@ -69,7 +69,6 @@ const Login = ({ imagePath, imageAlt, setIsAuthenticatedFromApp }) => {
           userAvatar: localStorage.getItem("userAvatar"),
         }));
         setIsAuthenticated(true);
-        setIsAuthenticatedFromApp(true);
         navigate("/home");
       } else if (!response.isAuthenticated && response.status) {
         setModalProps(() => ({
@@ -185,11 +184,13 @@ const Login = ({ imagePath, imageAlt, setIsAuthenticatedFromApp }) => {
           <p className="login-info__toggle__title">switch between themes</p>
         </div>
       </div>
-      <img
-        className="login-pic"
-        src={require(`../../assets/${imagePath}`)}
-        alt={imageAlt}
-      />
+      {
+        <img
+          className="login-pic"
+          src={require(`../../assets/${imagePath}`)}
+          alt={imageAlt}
+        />
+      }
     </div>
   );
 };

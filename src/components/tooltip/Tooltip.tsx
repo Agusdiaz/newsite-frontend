@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./tooltip.scss";
 import { UserContext } from "../../context/userContext";
 
-const Tooltip = ({ children, setIsAuthenticatedFromApp }) => {
+const Tooltip = ({ children }) => {
   const { theme, setTheme, nextTheme } = useContext(ScreenContext);
   const { setIsAuthenticated, setUser } = useContext(UserContext);
   const navigate = useNavigate();
@@ -26,7 +26,6 @@ const Tooltip = ({ children, setIsAuthenticatedFromApp }) => {
       theme: null,
     }));
     setIsAuthenticated(false);
-    setIsAuthenticatedFromApp(false);
     navigate("/login");
   };
 
