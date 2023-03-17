@@ -116,3 +116,13 @@
         }
     }
 }
+
+@media only screen and (max-width:240px) {
+    .tooltip-container {
+
+        &__inside {
+            width: 8rem;
+            left: -6.7rem;
+        }
+    }
+}

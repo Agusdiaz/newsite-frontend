@@ -73,3 +73,32 @@
         }
     }
 }
+
+@media only screen and (max-width:240px) {
+    .navbarweb-container {
+        ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        li {
+            width: 50%;
+        }
+
+        li:hover {
+            border: 2px solid transparent;
+            border-bottom: 2px solid var(--border-color-navbar);
+        }
+
+        &__link {
+            padding: 0.2rem 0.7rem;
+            font-size: 0.7rem;
+        }
+
+        li:last-child {
+            border: 0;
+            padding: 0.2rem 0.2rem;
+            width: 20%;
+        }
+    }
+}
