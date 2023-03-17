@@ -1,25 +1,28 @@
 import { NavBarType } from "../utils/interfaces/NavBarTypes";
-import About from "../views/About/About";
 import Home from "../views/Home/Home";
 import News from "../views/News/News";
+import Profile from "../views/Profile/Profile";
+import { HomeSVG, NewsSVG, ProfileSVG } from "./iconsSVG";
 
-export const navBarRoutes: Array<NavBarType> = [
-  {
-    name: "Home",
-    path: "/home",
-    component: <Home />,
-    icon: null,
-  },
-  {
-    name: "News",
-    path: "/news",
-    component: <News />,
-    icon: null,
-  },
-  {
-    name: "About me",
-    path: "/about",
-    component: <About />,
-    icon: null,
-  },
-];
+export const navBarRoutes = (iconSize?): Array<NavBarType> => {
+  return [
+    {
+      name: "Home",
+      path: "/home",
+      component: <Home />,
+      icon: <HomeSVG width={iconSize} height={iconSize} />,
+    },
+    {
+      name: "News",
+      path: "/news",
+      component: <News />,
+      icon: <NewsSVG width={iconSize} height={iconSize} />,
+    },
+    {
+      name: "Profile",
+      path: "/profile",
+      component: <Profile />,
+      icon: <ProfileSVG width={iconSize} height={iconSize} />,
+    },
+  ];
+};

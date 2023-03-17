@@ -4,11 +4,16 @@ import { ScreenContext } from "../../context/screenContext";
 import { useNavigate } from "react-router-dom";
 import "./tooltip.scss";
 import { UserContext } from "../../context/userContext";
+import isMobileDevice from "../../utils/isMobileDevice";
 
 const Tooltip = ({ children }) => {
   const { theme, setTheme, nextTheme } = useContext(ScreenContext);
   const { setIsAuthenticated, setUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const classInside = isMobileDevice()
+    ? "tooltip-container__inside mobile"
+    : "tooltip-container__inside web";
 
   const handleTheme = () => {
     setTheme({ isTouched: true, theme: nextTheme });
@@ -32,41 +37,29 @@ const Tooltip = ({ children }) => {
   return (
     <div className="tooltip-container">
       {children}
-      <div className="tooltip-container__inside">
+      <div className={classInside}>
         <div className="tooltip-container__inside__block">
-          {theme.theme === "light" ? (
-            <>
-              <div className="tooltip-container__inside__block__icon">
-                <DarkTheme
-                  width={"1.7rem"}
-                  height={"1.7rem"}
-                  onClickFunction={() => handleTheme()}
-                />
-              </div>
-              <p
-                className="tooltip-container__inside__block__title"
-                onClick={() => handleTheme()}
-              >
-                Dark Theme
-              </p>
-            </>
-          ) : (
-            <>
-              <div className="tooltip-container__inside__block__icon">
-                <LightTheme
-                  width={"1.7rem"}
-                  height={"1.7rem"}
-                  onClickFunction={() => handleTheme()}
-                />
-              </div>
-              <p
-                className="tooltip-container__inside__block__title"
-                onClick={() => handleTheme()}
-              >
-                Light Theme
-              </p>
-            </>
-          )}
+          <div className="tooltip-container__inside__block__icon">
+            {theme.theme === "light" ? (
+              <DarkTheme
+                width={"1.7rem"}
+                height={"1.7rem"}
+                onClickFunction={() => handleTheme()}
+              />
+            ) : (
+              <LightTheme
+                width={"1.7rem"}
+                height={"1.7rem"}
+                onClickFunction={() => handleTheme()}
+              />
+            )}
+          </div>
+          <p
+            className="tooltip-container__inside__block__title"
+            onClick={() => handleTheme()}
+          >
+            {`${theme.theme === "light" ? "Dark" : "Light "} Theme`}
+          </p>
         </div>
         <div className="tooltip-container__inside__block">
           <div className="tooltip-container__inside__block__icon">

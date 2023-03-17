@@ -1,6 +1,6 @@
 const isMobileDevice = () => {
   if (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|X11/i.test(
       navigator.userAgent
     )
   )

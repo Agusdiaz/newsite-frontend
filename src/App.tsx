@@ -5,15 +5,18 @@ import GlobalLayout from "./views/Layout/GlobalLayout";
 import ViewLayout from "./views/Layout/ViewLayout";
 
 import Login from "./views/Login/Login";
-import NavBar from "./views/NavBar/NavBar";
+import NavBarWeb from "./views/NavBar/NavBarWeb";
 import Home from "./views/Home/Home";
 import News from "./views/News/News";
-import About from "./views/About/About";
 import NotFound from "./views/NotFound/NotFound";
 import OutsideNotifications from "./views/OutsideNotification/OutsideNotification";
 
 import ScreenProvider from "./context/screenContext";
 import { UserContext } from "./context/userContext";
+import NavBarMobile from "./views/NavBar/NavBarMobile";
+import Profile from "./views/Profile/Profile";
+
+import isMobileDevice from "./utils/isMobileDevice";
 
 const randomImages = [
   { path: "mountains.jpg", alt: "Mountains pic" },
@@ -33,16 +36,17 @@ const App = () => {
       <GlobalLayout>
         {isAuthenticated ? (
           <>
-            <NavBar />
+            {!isMobileDevice() && <NavBarWeb />}
             <ViewLayout>
               <Routes>
                 <Route index element={<Home />} key={0} />
                 <Route path="/home" element={<Home />} key={1} />
                 <Route path="/news" element={<News />} key={2} />
-                <Route path="/about" element={<About />} key={3} />
+                <Route path="/profile" element={<Profile />} key={3} />
                 <Route path="*" element={<NotFound />} key={4} />
               </Routes>
             </ViewLayout>
+            {isMobileDevice() && <NavBarMobile />}
           </>
         ) : (
           <Routes>

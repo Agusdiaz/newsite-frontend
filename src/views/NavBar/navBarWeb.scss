@@ -1,4 +1,4 @@
-.navbar-container {
+.navbarweb-container {
     width: 100vw;
     display: flex;
     align-items: flex-end;
@@ -38,7 +38,7 @@
     }
 
     &__link--active {
-        @extend .navbar-container__link;
+        @extend .navbarweb-container__link;
         color: var(--border-color-navbar);
         font-weight: 600;
     }
@@ -51,7 +51,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .navbar-container {
+    .navbarweb-container {
         &__link {
             font-size: 1rem;
         }
@@ -59,7 +59,7 @@
 }
 
 @media only screen and (max-width:400px) {
-    .navbar-container {
+    .navbarweb-container {
         &__link {
             padding: 0.2rem 0.7rem;
         }

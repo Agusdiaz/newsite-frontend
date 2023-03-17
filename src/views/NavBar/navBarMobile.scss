@@ -1,0 +1,31 @@
+.navbarmobile-container {
+    width: 100vw;
+    background-color: var(--background-color-navbar);
+
+    ul {
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 0.8rem 0;
+        justify-content: space-evenly;
+    }
+
+    li {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__link--active {
+        .navbar-icon {
+            stroke: var(--border-color-navbar);
+        }
+    }
+}

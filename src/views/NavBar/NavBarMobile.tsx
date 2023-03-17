@@ -4,33 +4,33 @@ import { SettingAnimation } from "../../assets/iconAnimations";
 import { navBarRoutes } from "../../assets/navBarRoutes";
 import Tooltip from "../../components/tooltip/Tooltip";
 import { ScreenContext } from "../../context/screenContext";
-import "./navBar.scss";
+import "./navBarMobile.scss";
 
-const NavBar = () => {
+const NavBarMobile = () => {
   const { windowSize } = useContext(ScreenContext);
   const [iconSize, setIconSize] = useState("");
   const location = useLocation();
 
   useEffect(() => {
-    if (windowSize[0] <= 400) setIconSize("1.2rem");
-    if (windowSize[0] > 400 && windowSize[0] <= 768) setIconSize("1.6rem");
-    if (windowSize[0] > 768) setIconSize("2rem");
+    if (windowSize[0] <= 400) setIconSize("1.7rem");
+    if (windowSize[0] > 400 && windowSize[0] <= 768) setIconSize("2.1rem");
+    if (windowSize[0] > 768) setIconSize("2.4rem");
   }, [windowSize]);
 
   return (
-    <nav className="navbar-container">
+    <nav className="navbarmobile-container">
       <ul>
-        {navBarRoutes.map((el, index) => (
+        {navBarRoutes(iconSize).map((el, index) => (
           <li key={index}>
             <NavLink
               className={({ isActive }) =>
                 isActive || (location.pathname === "/" && el.name === "Home")
-                  ? "navbar-container__link--active"
-                  : "navbar-container__link"
+                  ? "navbarmobile-container__link--active"
+                  : "navbarmobile-container__link"
               }
               to={el.path}
             >
-              {el.name}
+              {el.icon}
             </NavLink>
           </li>
         ))}
@@ -44,4 +44,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NavBarMobile;

@@ -1,7 +1,6 @@
 .toggleTheme-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    transform: translate(0%, -70%);
 
     #hide-checkbox {
         opacity: 0;
@@ -185,5 +184,15 @@
         left: 1.8125rem;
         top: 1.125rem;
         box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media only screen and (max-height: 560px) {
+    .toggleTheme-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: -1.8rem;
     }
 }
