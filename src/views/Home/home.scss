@@ -1,0 +1,16 @@
+.home-container {
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    &__carousel {
+        height: 60%;
+        min-height: 15rem;
+        position: relative;
+    }
+
+    &__information {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}

@@ -1,6 +1,7 @@
 .tooltip-container {
     position: relative;
     display: flex;
+    z-index: 1;
 
     &__inside {
         display: flex;
@@ -59,9 +60,9 @@
 
 .tooltip-container__inside.web:before {
     position: absolute;
-    top: -1.3rem;
+    top: -1.8rem;
     left: 0;
-    height: 2.1rem;
+    height: 2.5rem;
     width: 100%;
     content: " ";
 }

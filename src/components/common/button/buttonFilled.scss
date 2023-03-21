@@ -7,7 +7,7 @@
 }
 
 .filledButton.default {
-    background: linear-gradient(to left, var(--blueGrotto) 50%, var(--blueGreen) 50%) right;
+    background: linear-gradient(to left, var(--background-color-navbar) 50%, var(--blueGreen) 50%) right;
     background-size: 200%;
     transition: .3s ease-out;
 }
