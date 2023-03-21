@@ -447,6 +447,7 @@ const HomeSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
     </svg>
   );
 };
+
 const NewsSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
   return (
     <svg
@@ -466,6 +467,7 @@ const NewsSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
     </svg>
   );
 };
+
 const ProfileSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
   return (
     <svg

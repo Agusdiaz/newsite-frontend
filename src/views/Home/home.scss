@@ -1,7 +1,8 @@
 .home-container {
     width: 100%;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 
     &__carousel {
         height: 60%;
@@ -10,7 +11,90 @@
     }
 
     &__information {
-        overflow-x: hidden;
-        overflow-y: auto;
+        display: flex;
+        justify-content: center;
+
+        &__leftInfo,
+        &__rightInfo {
+            width: 48%;
+            padding: 1.2rem;
+        }
+
+        &__leftInfo__title,
+        &__rigthInfo__title {
+            margin: 0 0 1rem 0;
+            font-size: 1.6rem;
+            font-weight: 500;
+        }
+
+        &__leftInfo__subtitle,
+        &__rightInfo__subtitle-container__subtitle {
+            padding: 0;
+            margin: 0;
+            text-align: justify;
+
+            .customLink {
+                color: black;
+                text-decoration: underline;
+                font-weight: 500;
+            }
+        }
+
+        &__rightInfo__subtitle-container {
+            display: flex;
+            flex-direction: row;
+
+            &__subtitle {
+                padding: 0 0 0 1rem;
+            }
+
+            &__avatar {
+                width: 8rem;
+                height: 8rem;
+                border-radius: 50%;
+                border: 2px solid var(--darkGrey);
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .home-container__information {
+
+        &__leftInfo__subtitle,
+        &__rightInfo__subtitle-container__subtitle {
+            font-size: 0.8rem;
+
+            .customLink {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .home-container__information {
+        flex-direction: column;
+
+        &__leftInfo,
+        &__rightInfo {
+            width: 100%;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .home-container__information__rightInfo__subtitle-container {
+        flex-direction: column;
+        align-items: center;
+
+        &__subtitle {
+            padding: 1rem 0 0 0;
+        }
+
+        &__avatar {
+            width: 6rem;
+            height: 6rem;
+        }
     }
 }

@@ -5,7 +5,7 @@ import ButtonFilled from "../../components/common/button/ButtonFilled";
 import Checkbox from "../../components/common/button/Checkbox";
 import ToggleSwitchTheme from "../../components/toggleTheme/ToggleSwitchTheme";
 import Input from "../../components/common/input/Input";
-import Link from "../../components/common/link/link";
+import Link from "../../components/common/link/Link";
 import { ScreenContext } from "../../context/screenContext";
 import { UserContext } from "../../context/userContext";
 import { getUserInfoLogin } from "../../services/auth/authService";
