@@ -1,0 +1,106 @@
+.profile-container {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    padding: 1rem;
+
+    &__info {
+        min-height: 20rem;
+        width: 75%;
+        min-width: 8rem;
+        margin: auto;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 1px 1px 10px 5px var(--shadow-color);
+        background: var(--background-color-profileInfo);
+        display: flex;
+        text-align: center;
+        align-items: center;
+
+        &__avatar {
+            height: 22rem;
+            margin-right: 1rem;
+        }
+
+        &__data {
+            width: 100%;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            &__name {
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin: 0;
+            }
+
+            &__skills {
+                margin-bottom: 0;
+            }
+
+            &__skills-container {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+
+                .skill-badge {
+                    border: 3px solid var(--limeGreen);
+                    padding: 0.2rem 1rem;
+                    background: var(--yellowGreen);
+                    margin: 0.2rem 1rem;
+                    border-radius: 0.3rem;
+                    box-shadow: 1px 1px 10px 5px var(--shadow-color);
+                    transition: all 500ms;
+
+                    &:hover {
+                        padding: 0.5rem 1.3rem;
+                        background-color: var(--limeGreen);
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .profile-container__info {
+        flex-direction: column;
+
+        &__avatar {
+            width: auto;
+            height: 16rem;
+            margin: 0 0 1rem 0;
+        }
+
+        &__data {
+            font-size: 1rem;
+
+            &__name {
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .profile-container__info {
+
+        &__avatar {
+            width: 100%;
+            height: auto;
+        }
+
+        &__data {
+            font-size: 0.6rem;
+
+            &__name {
+                font-size: 1.2rem;
+            }
+        }
+    }
+}

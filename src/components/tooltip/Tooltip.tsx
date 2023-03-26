@@ -28,6 +28,9 @@ const Tooltip = ({ children }) => {
       userEmail: "",
       userName: "",
       userAvatar: "",
+      userBirthdate: "",
+      userCountry: "",
+      userSkills: [],
       theme: null,
     }));
     setIsAuthenticated(false);

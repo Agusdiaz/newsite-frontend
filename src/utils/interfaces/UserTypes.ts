@@ -3,4 +3,7 @@ export type UserType = {
   userEmail: string;
   userName: string;
   userAvatar: string;
+  userCountry: string;
+  userBirthdate: string;
+  userSkills: string;
 };

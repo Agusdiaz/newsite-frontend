@@ -20,6 +20,15 @@ const UserProvider = ({ children }) => {
     userAvatar: localStorage.getItem("userAvatar")
       ? localStorage.getItem("userAvatar")
       : "",
+    userCountry: localStorage.getItem("userCountry")
+      ? localStorage.getItem("userCountry")
+      : "",
+    userBirthdate: localStorage.getItem("userBirthdate")
+      ? localStorage.getItem("userBirthdate")
+      : "",
+    userSkills: localStorage.getItem("userSkills")
+      ? localStorage.getItem("userSkills")
+      : "",
   });
 
   return (
