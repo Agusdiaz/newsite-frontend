@@ -27,3 +27,22 @@
 .navbar-icon:hover {
     stroke: var(--border-color-navbar);
 }
+
+.card-icon {
+    cursor: pointer;
+    margin: 0.1rem 0.5rem;
+    stroke: #FFFFFF;
+
+    g {
+        fill: #FFFFFF;
+    }
+
+}
+
+.card-icon:hover {
+    stroke: var(--border-color-navbar);
+
+    g {
+        fill: var(--border-color-navbar);
+    }
+}

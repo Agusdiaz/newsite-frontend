@@ -1,6 +1,7 @@
-const formatDate = (date: string) => {
+const formatDate = (date: string, withTime?: boolean) => {
   const newDate = new Date(date);
-  return newDate.toLocaleDateString();
+  if (withTime) return newDate.toLocaleString();
+  else return newDate.toLocaleDateString();
 };
 
 export default formatDate;

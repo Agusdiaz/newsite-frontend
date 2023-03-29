@@ -62,3 +62,98 @@
     transform: rotate(35deg);
     stroke: var(--border-color-navbar);
 }
+
+.refresh-icon {
+    padding: 0;
+    fill: #000000;
+    cursor: pointer;
+    margin: 0.3rem;
+}
+
+.refresh-icon:hover {
+    fill: var(--limeGreen);
+    -webkit-transition: fill 0.7s ease-out;
+    -moz-transition: fill 0.7s ease-out;
+    -o-transition: fill 0.7s ease-out;
+    transition: fill 0.7s ease-out;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1;
+    animation-name: spin;
+}
+
+@-ms-keyframes spin {
+    from {
+        -ms-transform: rotate(0deg);
+    }
+
+    to {
+        -ms-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spin {
+    from {
+        -moz-transform: rotate(0deg);
+    }
+
+    to {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animated-actions {
+    cursor: pointer;
+
+    .cls-1 {
+        fill: none;
+        stroke: #000000;
+        stroke-linecap: round;
+        stroke-linejoin: bevel;
+    }
+}
+
+.animated-actions:hover {
+    animation: shake 500ms ease-in-out forwards;
+
+    .cls-1 {
+        stroke: var(--limeGreen);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(10deg);
+    }
+
+    50% {
+        transform: rotate(-9deg);
+    }
+
+    70% {
+        transform: rotate(9deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}

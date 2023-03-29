@@ -488,6 +488,123 @@ const ProfileSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
   );
 };
 
+const CalendarSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
+  return (
+    <svg
+      className="calendar-icon"
+      width={width ? width : "2rem"}
+      height={height ? height : "2rem"}
+      fill="#000000"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M6,22H18a3,3,0,0,0,3-3V7a2,2,0,0,0-2-2H17V3a1,1,0,0,0-2,0V5H9V3A1,1,0,0,0,7,3V5H5A2,2,0,0,0,3,7V19A3,3,0,0,0,6,22ZM5,12.5a.5.5,0,0,1,.5-.5h13a.5.5,0,0,1,.5.5V19a1,1,0,0,1-1,1H6a1,1,0,0,1-1-1Z" />
+    </svg>
+  );
+};
+
+const PersonSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
+  return (
+    <svg
+      className="person-icon"
+      width={width ? width : "2rem"}
+      height={height ? height : "2rem"}
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15 8.5C15 10.433 13.433 12 11.5 12C9.567 12 8 10.433 8 8.5C8 6.567 9.567 5 11.5 5C13.433 5 15 6.567 15 8.5Z"
+        fill="#000000"
+      />
+      <path
+        d="M17.6305 20H5.94623C5.54449 20 5.31716 19.559 5.56788 19.2451C6.68379 17.8479 9.29072 15 12 15C14.7275 15 17.0627 17.8864 18.0272 19.2731C18.2474 19.5897 18.0161 20 17.6305 20Z"
+        fill="#000000"
+        stroke="#000000"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+};
+
+const ShareSVG: any = ({ width, height, onClickFunction }) => {
+  return (
+    <svg
+      className="card-icon"
+      width={width ? width : "2rem"}
+      height={height ? height : "2rem"}
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={onClickFunction}
+    >
+      <g
+        id="Page-1"
+        stroke="none"
+        strokeWidth="1"
+        fill="none"
+        fillRule="evenodd"
+      >
+        <g
+          id="Dribbble-Light-Preview"
+          transform="translate(-380.000000, -3319.000000)"
+          fill="#FFFFFF"
+        >
+          <g id="icons" transform="translate(56.000000, 160.000000)">
+            <path
+              d="M340,3170.875 C338.897,3170.875 338,3169.978 338,3168.875 C338,3167.772 338.897,3166.875 340,3166.875 C341.103,3166.875 342,3167.772 342,3168.875 C342,3169.978 341.103,3170.875 340,3170.875 M328,3177 C326.897,3177 326,3176.103 326,3175 C326,3173.897 326.897,3173 328,3173 C330.643,3173 330.644,3177 328,3177 M328,3165 C326.897,3165 326,3164.103 326,3163 C326,3161.897 326.897,3161 328,3161 C330.643,3161 330.644,3165 328,3165 M340,3164.875 C338.779,3164.875 337.7,3165.434 336.966,3166.296 L331.959,3163.405 C332.212,3160.919 330.269,3159 328,3159 C325.791,3159 324,3160.791 324,3163 C324,3165.209 325.791,3167 328,3167 C329.347,3167 330.532,3166.329 331.257,3165.309 L336.079,3168.093 C335.971,3168.637 335.974,3169.161 336.088,3169.704 L331.141,3172.551 C330.409,3171.613 329.281,3171 328,3171 C325.791,3171 324,3172.791 324,3175 C324,3177.209 325.791,3179 328,3179 C330.362,3179 332.324,3176.928 331.939,3174.399 L336.995,3171.49 C337.728,3172.332 338.796,3172.875 340,3172.875 C342.209,3172.875 344,3171.084 344,3168.875 C344,3166.666 342.209,3164.875 340,3164.875"
+              id="share-[#1100]"
+            ></path>
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+};
+
+const FavouriteSVG: any = ({ width, height, onClickFunction }) => {
+  return (
+    <svg
+      className="card-icon"
+      width={width ? width : "2rem"}
+      height={height ? height : "2rem"}
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={onClickFunction}
+    >
+      <path
+        d="M19.57,5.44a4.91,4.91,0,0,1,0,6.93L12,20,4.43,12.37A4.91,4.91,0,0,1,7.87,4a4.9,4.9,0,0,1,3.44,1.44,4.46,4.46,0,0,1,.69.88,4.46,4.46,0,0,1,.69-.88,4.83,4.83,0,0,1,6.88,0Z"
+        style={{
+          fill: "none",
+          strokeLinecap: "round",
+          strokeLinejoin: "round",
+          strokeWidth: 2,
+        }}
+      ></path>
+    </svg>
+  );
+};
+
+const OpenSVG: any = ({ width, height, onClickFunction }) => {
+  return (
+    <svg
+      className="card-icon"
+      width={width ? width : "2rem"}
+      height={height ? height : "2rem"}
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="5"
+      fill="none"
+      onClick={onClickFunction}
+    >
+      <path d="M55.4,32V53.58a1.81,1.81,0,0,1-1.82,1.82H10.42A1.81,1.81,0,0,1,8.6,53.58V10.42A1.81,1.81,0,0,1,10.42,8.6H32" />
+      <polyline points="40.32 8.6 55.4 8.6 55.4 24.18" />
+      <line x1="19.32" y1="45.72" x2="54.61" y2="8.91" />
+    </svg>
+  );
+};
+
 export {
   LightTheme,
   DarkTheme,
@@ -498,4 +615,9 @@ export {
   HomeSVG,
   NewsSVG,
   ProfileSVG,
+  CalendarSVG,
+  PersonSVG,
+  ShareSVG,
+  FavouriteSVG,
+  OpenSVG,
 };
