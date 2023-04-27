@@ -17,7 +17,7 @@ const SearchBar = (props: { searchProps: SearchBarType }) => {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
       />
-      <div className="search-box-container">
+      <div className="search-box-container" title="Search">
         <button
           className="search-box-container__btn"
           type="submit"

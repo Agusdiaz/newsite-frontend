@@ -1,6 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { ModalType } from "../utils/interfaces/ModalTypes";
 import isMobileDevice from "../utils/isMobileDevice";
+import { SelectedNewType } from "../utils/interfaces/NewTypes";
+import { ToastType } from "../utils/interfaces/ToastTypes";
 export const ScreenContext = createContext(null);
 const { Provider } = ScreenContext;
 
@@ -10,7 +12,6 @@ const ScreenProvider = ({ children }) => {
     isTouched: false,
   });
   const nextTheme = theme.theme === "light" ? "dark" : "light";
-
   const [activeOnBlur, setActiveOnBlur] = useState(false);
   const [isMobile] = useState(isMobileDevice());
   const [showLoader, setShowLoader] = useState(false);
@@ -34,7 +35,23 @@ const ScreenProvider = ({ children }) => {
     },
     closeModal: () => {},
   });
-
+  const [showModalNew, setShowModalNew] = useState(false);
+  const [selectedNewProps, setSelectedNewProps] = useState<SelectedNewType>({
+    id: 0,
+    createdAt: "",
+    name: "",
+    content: "",
+    image: "",
+    creator: "",
+    closeModal: () => {},
+  });
+  const [showToast, setShowToast] = useState(false);
+  const [toastProps, setToastProps] = useState<ToastType>({
+    title: "",
+    description: "",
+    type: "success",
+    closeToast: () => {},
+  });
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
@@ -70,6 +87,14 @@ const ScreenProvider = ({ children }) => {
         showModal,
         setModalProps,
         modalProps,
+        setShowModalNew,
+        showModalNew,
+        setSelectedNewProps,
+        selectedNewProps,
+        showToast,
+        setShowToast,
+        toastProps,
+        setToastProps,
         isMobile,
         windowSize,
       }}

@@ -17,6 +17,10 @@
     --redErrorHover: #F54040;
     --greenSuccess: #508A0E;
     --greenSuccessHover: #87E023;
+    --successToast: #5cb85c;
+    --dangerToast: #d9534f;
+    --infoToast: #5bc0de;
+    --warningToast: #f0ad4e;
 }
 
 //style for different themes
@@ -28,6 +32,7 @@ body[data-theme="light"] {
     --text-color: var(--darkGrey);
     --background-color-profileInfo: var(--lightGrey);
     --svg-color: #000000;
+    --scrollbar-thumb-background: var(--shadow-color);
 }
 
 body[data-theme="dark"] {
@@ -38,6 +43,7 @@ body[data-theme="dark"] {
     --background-color-profileInfo: var(--mediumGrey);
     --text-color: #FFFFFF;
     --svg-color: #FFFFFF;
+    --scrollbar-thumb-background: #a9a1a1;
 }
 
 *,
@@ -63,14 +69,16 @@ input {
     width: 0.4rem;
     height: 0.4rem;
     background-color: var(--input-background-color);
+    border-radius: 0.1875rem;
 }
 
 ::-webkit-scrollbar-track {
     background-color: var(--input-background-color);
+    border-radius: 0.1875rem;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--shadow-color);
+    background-color: var(--scrollbar-thumb-background);
     border-radius: 0.1875rem;
 }
 

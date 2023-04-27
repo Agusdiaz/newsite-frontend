@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ActionsSVG } from "../../assets/iconAnimations";
 import { CalendarSVG, PersonSVG } from "../../assets/iconsSVG";
 import formatDate from "../../utils/formatDate";
 import { NewType } from "../../utils/interfaces/NewTypes";
 import TooltipActions from "../tooltip/TooltipActions";
 import "./card.scss";
+import { ScreenContext } from "../../context/screenContext";
+import { UserContext } from "../../context/userContext";
 
 const Card = (props: { cardProps: NewType }) => {
+  const { setShowModalNew, setSelectedNewProps } = useContext(ScreenContext);
+  const { user } = useContext(UserContext);
+
   const { id, name, content, createdAt, creator, image } = props.cardProps;
+
+  const openNew = () => {
+    setSelectedNewProps(() => ({
+      id,
+      createdAt,
+      name,
+      content,
+      image,
+      creator,
+      closeModal: () => {
+        setShowModalNew(false);
+      },
+    }));
+    setShowModalNew(true);
+  };
 
   return (
     <div className="card-container" key={id}>
       <div className="card-container__actions">
-        <TooltipActions>
+        <TooltipActions
+          openNew={openNew}
+          mailInfo={`mailto:email@example.com?subject=${
+            user.userName
+          } has shared a news with you&body=Name: ${name}%0D%0AContent: ${content}%0D%0ACreated By: ${creator}%0D%0ACreated At: ${formatDate(
+            createdAt,
+            true
+          )}%0D%0A%0D%0APlease, visit out News Site for more information :)%0D%0A%0D%0A`}
+        >
           <ActionsSVG />
         </TooltipActions>
       </div>

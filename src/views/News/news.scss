@@ -26,9 +26,10 @@
 
 .news-container {
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 0.3rem;
     overflow-y: auto;
     overflow-x: hidden;
+    height: 100%;
 
     .empty-news {
         display: flex;
@@ -53,8 +54,9 @@
     &__slider {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
         margin-top: 1rem;
+        justify-content: space-between;
+        padding: 0 1rem;
     }
 }
 
@@ -69,6 +71,12 @@
         margin: auto;
         text-align: center;
         margin: 0 2rem 2rem;
+    }
+}
+
+@media only screen and (max-width: 1472px) {
+    .news-container__slider {
+        justify-content: center;
     }
 }
 

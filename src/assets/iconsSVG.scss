@@ -47,6 +47,37 @@
     }
 }
 
-.empty-search-icon{
+.calendar-person-div {
+    display: flex;
+}
+
+.person-icon {
+    fill: #000000;
+    stroke: #000000;
+}
+
+.empty-search-icon {
     margin: auto;
+}
+
+.help-text {
+    display: flex;
+    align-items: center;
+
+    a {
+        display: flex;
+    }
+}
+
+.close-arrow {
+    fill: var(--text-color);
+    cursor: pointer;
+}
+
+.close-arrow:hover {
+    fill: var(--border-color-navbar);
+}
+
+#close-div {
+    margin-left: auto;
 }

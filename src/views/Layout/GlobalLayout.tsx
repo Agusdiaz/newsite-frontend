@@ -3,13 +3,13 @@ import { ScreenContext } from "../../context/screenContext";
 import "./globalLayout.scss";
 
 const GlobalLayout = ({ children }) => {
-  const { activeOnBlur, showLoader, showModal, setActiveOnBlur } =
+  const { activeOnBlur, showLoader, showModal, showModalNew, setActiveOnBlur } =
     useContext(ScreenContext);
 
   useEffect(() => {
-    if (showLoader || showModal) setActiveOnBlur(true);
+    if (showLoader || showModal || showModalNew) setActiveOnBlur(true);
     else setActiveOnBlur(false);
-  }, [showLoader, showModal, setActiveOnBlur]);
+  }, [showLoader, showModal, showModalNew, setActiveOnBlur]);
 
   return (
     <div
