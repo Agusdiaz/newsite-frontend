@@ -34,13 +34,17 @@ const Profile = () => {
           },
         }));
       } else {
-        let userNews = []
-        userNews = response.data.filter(el => {
-          return el.creator === user.userEmail
-        })
-        setNews(userNews.sort(function (a, b) {
-          return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf();
-        }));
+        let userNews = [];
+        userNews = response.data.filter((el) => {
+          return el.creator === user.userEmail;
+        });
+        setNews(
+          userNews.sort(function (a, b) {
+            return (
+              new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+            );
+          })
+        );
       }
     });
   }, [setShowLoader, setModalProps, setShowModal, user.userEmail]);
@@ -70,19 +74,23 @@ const Profile = () => {
               🌎 {user.userCountry}
             </p>
             <p className="profile-container__info__other__posts">
-              <b>{news?.length > 0 ? formatNumber(news.length) : 0}</b><br />posts
+              <b>{news?.length > 0 ? formatNumber(news.length) : 0}</b>
+              <br />
+              posts
             </p>
           </div>
         </div>
       </div>
       <div className="profile-container__news">
-        <p className="profile-container__news__header">Here are the news you posted:</p>
+        <p className="profile-container__news__header">
+          Here are the news you posted:
+        </p>
         <div className="profile-container__news__holder">
           {news === null || news.length === 0 ? (
             <div className="profile-container__news__holder__empty-news">
               <img
                 className="profile-container__news__holder__empty-news__pic"
-                src={require(`../../assets/emptyBox.png`)}
+                src={require(`../../assets/images/emptyBox.png`)}
                 alt={"No news posted"}
               />
               <p className="profile-container__news__holder__empty-news__title">

@@ -15,7 +15,7 @@ const NotFound = () => {
         <h2 className="notfound-container__subtitle">404 - Page not found</h2>
         <img
           className="notfound-container__pic"
-          src={require(`../../assets/notfound.png`)}
+          src={require(`../../assets/images/notfound.png`)}
           alt={"Not found"}
         />
         <h3 className="notfound-container__explanation">

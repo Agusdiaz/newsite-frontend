@@ -162,9 +162,7 @@
         }
 
         &__subtitles {
-
-            .checkboxLabel__title,
-            .checkboxLabel__title--active {
+            .checkboxLabel__title {
                 font-size: 0.8rem;
             }
 
@@ -189,7 +187,6 @@
 
 @media only screen and (max-width: 300px) {
     .login-info {
-
         &__subtitles {
             flex-direction: column;
 

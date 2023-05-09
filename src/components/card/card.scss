@@ -65,7 +65,8 @@
     }
 }
 
-.card-container:hover {
+.card-container:hover,
+.card-container:focus {
     transform: scale(1.05);
 }
 

@@ -67,7 +67,16 @@ const SettingAnimation: React.FC<React.SVGProps<string>> = ({
 
 const RefreshAnimation: any = ({ width, height, onClickFunction }) => {
   return (
-    <div className="help-text" title="Refresh">
+    <div
+      className="help-text refresh"
+      title="Refresh"
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          onClickFunction();
+        }
+      }}
+      tabIndex={0}
+    >
       <svg
         className="refresh-icon"
         width={width ? width : "3rem"}
@@ -83,7 +92,7 @@ const RefreshAnimation: any = ({ width, height, onClickFunction }) => {
   );
 };
 
-const ActionsSVG: any = ({ width, height, onClickFunction }) => {
+const ActionsSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
   return (
     <svg
       className="animated-actions"
@@ -91,7 +100,7 @@ const ActionsSVG: any = ({ width, height, onClickFunction }) => {
       height={height ? height : "2rem"}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      onClick={onClickFunction}
+      tabIndex={-1}
     >
       <circle className="cls-1" cx="4.19" cy="11.98" r="2" />
       <circle className="cls-1" cx="12" cy="12.02" r="2" />

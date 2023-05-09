@@ -19,7 +19,7 @@ const TooltipActions = ({ children, openNew, mailInfo }) => {
   };
 
   return (
-    <div className="tooltip-actions-container">
+    <div className="tooltip-actions-container" tabIndex={0}>
       {children}
       <div className="tooltip-actions-container__inside">
         <OpenSVG width={"1.6rem"} height={"1.6rem"} onClickFunction={openNew} />

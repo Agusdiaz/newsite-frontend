@@ -188,7 +188,7 @@ const Login = ({ imagePath, imageAlt }) => {
       </div>
       <img
         className="login-pic"
-        src={require(`../../assets/${imagePath}`)}
+        src={require(`../../assets/images/${imagePath}`)}
         alt={imageAlt}
       />
     </div>

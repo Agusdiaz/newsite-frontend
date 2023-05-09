@@ -37,10 +37,18 @@ const Tooltip = ({ children }) => {
   };
 
   return (
-    <div className="tooltip-container">
+    <div className="tooltip-container" tabIndex={0}>
       {children}
       <div className={classInside}>
-        <div className="tooltip-container__inside__block">
+        <div
+          className="tooltip-container__inside__block"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleTheme();
+            }
+          }}
+        >
           <div className="tooltip-container__inside__block__icon">
             {theme.theme === "light" ? (
               <DarkTheme
@@ -63,7 +71,15 @@ const Tooltip = ({ children }) => {
             {`${theme.theme === "light" ? "Dark" : "Light "} Theme`}
           </p>
         </div>
-        <div className="tooltip-container__inside__block">
+        <div
+          className="tooltip-container__inside__block"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleLogout();
+            }
+          }}
+        >
           <div className="tooltip-container__inside__block__icon">
             <LogOut
               width={"1.7rem"}

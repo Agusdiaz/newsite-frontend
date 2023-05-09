@@ -5,6 +5,12 @@ import "./checkbox.scss";
 const Checkbox = (props: { checkboxProps: CheckboxType }) => {
   const { name, isChecked, handleIsChecked } = props.checkboxProps;
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleIsChecked(!isChecked);
+    }
+  };
+
   return (
     <label className="checkboxLabel">
       <input
@@ -13,10 +19,10 @@ const Checkbox = (props: { checkboxProps: CheckboxType }) => {
           handleIsChecked(!isChecked);
         }}
         className="checkboxLabel__box"
+        onKeyDown={handleKeyDown}
+        checked={isChecked}
       />
-      <span className={`checkboxLabel__title${isChecked ? "--active" : ""}`}>
-        {name}
-      </span>
+      <span className="checkboxLabel__title">{name}</span>
     </label>
   );
 };

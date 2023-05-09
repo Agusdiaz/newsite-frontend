@@ -87,6 +87,18 @@
     transform: translateY(0px);
 }
 
+.tooltip-container:focus-within {
+    .tooltip-container__inside {
+        opacity: 1;
+        pointer-events: auto;
+        -webkit-transform: translateY(0px);
+        -moz-transform: translateY(0px);
+        -ms-transform: translateY(0px);
+        -o-transform: translateY(0px);
+        transform: translateY(0px);
+    }
+}
+
 .tooltip-container__inside.web {
     bottom: -7rem;
 }

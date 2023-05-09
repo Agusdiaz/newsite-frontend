@@ -30,22 +30,23 @@ const Card = (props: { cardProps: NewType }) => {
   };
 
   return (
-    <div className="card-container" key={id}>
+    <div className="card-container" key={id} tabIndex={0}>
       <div className="card-container__actions">
         <TooltipActions
           openNew={openNew}
-          mailInfo={`mailto:email@example.com?subject=${user.userName
-            } has shared a news with you&body=Name: ${name}%0D%0AContent: ${content}%0D%0ACreated By: ${creator}%0D%0ACreated At: ${formatDate(
-              createdAt,
-              true
-            )}%0D%0A%0D%0APlease, visit out News Site for more information :)%0D%0A%0D%0A`}
+          mailInfo={`mailto:email@example.com?subject=${
+            user.userName
+          } has shared a news with you&body=Name: ${name}%0D%0AContent: ${content}%0D%0ACreated By: ${creator}%0D%0ACreated At: ${formatDate(
+            createdAt,
+            true
+          )}%0D%0A%0D%0APlease, visit out News Site for more information :)%0D%0A%0D%0A`}
         >
           <ActionsSVG />
         </TooltipActions>
       </div>
       <img
         className="card-container__pic"
-        src={image ? image : require("../../assets/noPhoto.png")}
+        src={image ? image : require("../../assets/images/noPhoto.png")}
         alt="Card illustration"
       />
       <div className="card-container__content">

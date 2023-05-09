@@ -40,9 +40,14 @@ const News = () => {
             setShowModal(false);
           },
         }));
-      } else setNews(response.data.sort(function (a, b) {
-        return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf();
-      }));
+      } else
+        setNews(
+          response.data.sort(function (a, b) {
+            return (
+              new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+            );
+          })
+        );
     });
   }, [setShowLoader, setModalProps, setShowModal]);
 
@@ -64,9 +69,14 @@ const News = () => {
             setShowModal(false);
           },
         }));
-      } else setNews(response.data.sort(function (a, b) {
-        return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf();
-      }));
+      } else
+        setNews(
+          response.data.sort(function (a, b) {
+            return (
+              new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf()
+            );
+          })
+        );
     });
   };
 
@@ -104,7 +114,7 @@ const News = () => {
           <div className="empty-news">
             <img
               className="empty-news__pic"
-              src={require(`../../assets/emptyBox.png`)}
+              src={require(`../../assets/images/emptyBox.png`)}
               alt={"No news posted"}
             />
             <p className="empty-news__title">

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import "./toast.scss";
 import { ToastType } from "../../utils/interfaces/ToastTypes";
 import { ScreenContext } from "../../context/screenContext";
@@ -8,6 +8,8 @@ import isMobileDevice from "../../utils/isMobileDevice";
 const Toast = (props: { toastProps: ToastType }) => {
   const { showToast } = useContext(ScreenContext);
   const { title, description, type, closeToast } = props.toastProps;
+
+  const ref: any = useRef();
 
   const classInside = isMobileDevice()
     ? "toast-container mobile"
@@ -25,8 +27,12 @@ const Toast = (props: { toastProps: ToastType }) => {
     };
   }, [closeToast, showToast]);
 
+  useEffect(() => {
+    ref.current.focus();
+  });
+
   return (
-    <div className={`${classInside} ${type}`}>
+    <div className={`${classInside} ${type}`} ref={ref} tabIndex={0}>
       <div className="toast-container__info">
         <p className="toast-container__info__title">{title}</p>
         <p className="toast-container__info__description">{description}</p>

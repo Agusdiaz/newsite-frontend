@@ -30,16 +30,22 @@ const Carousel = () => {
         <input type="radio" name="slide" id="slide3" />
 
         <div className="slide s1">
-          <img src={require("../../assets/home1.jpg")} alt="First background" />
+          <img
+            src={require("../../assets/images/home1.jpg")}
+            alt="First background"
+          />
         </div>
         <div className="slide">
           <img
-            src={require("../../assets/home2.jpg")}
+            src={require("../../assets/images/home2.jpg")}
             alt="Second background"
           />
         </div>
         <div className="slide">
-          <img src={require("../../assets/home3.jpg")} alt="Third background" />
+          <img
+            src={require("../../assets/images/home3.jpg")}
+            alt="Third background"
+          />
         </div>
 
         <div className="carousel-container__slides__content">

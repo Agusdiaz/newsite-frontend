@@ -362,6 +362,12 @@ const PasswordOpenEye: any = ({ width, height, onClickFunction }) => {
       xmlns="http://www.w3.org/2000/svg"
       id="open-eye-svg"
       onClick={onClickFunction}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          onClickFunction();
+        }
+      }}
+      tabIndex={0}
     >
       <path
         opacity="0.15"
@@ -396,6 +402,12 @@ const PasswordCloseEye: any = ({ width, height, onClickFunction }) => {
       xmlns="http://www.w3.org/2000/svg"
       id="close-eye-svg"
       onClick={onClickFunction}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          onClickFunction();
+        }
+      }}
+      tabIndex={0}
     >
       <path
         d="M20 14.8335C21.3082 13.3317 22 12 22 12C22 12 18.3636 5 12 5C11.6588 5 11.3254 5.02013 11 5.05822C10.6578 5.09828 10.3244 5.15822 10 5.23552M12 9C12.3506 9 12.6872 9.06015 13 9.17071C13.8524 9.47199 14.528 10.1476 14.8293 11C14.9398 11.3128 15 11.6494 15 12M3 3L21 21M12 15C11.6494 15 11.3128 14.9398 11 14.8293C10.1476 14.528 9.47198 13.8524 9.1707 13C9.11386 12.8392 9.07034 12.6721 9.04147 12.5M4.14701 9C3.83877 9.34451 3.56234 9.68241 3.31864 10C2.45286 11.1282 2 12 2 12C2 12 5.63636 19 12 19C12.3412 19 12.6746 18.9799 13 18.9418"
@@ -528,7 +540,7 @@ const PersonSVG: React.FC<React.SVGProps<string>> = ({ width, height }) => {
   );
 };
 
-const ShareSVG: any = ({ width, height, onClickFunction, mailInfo }) => {
+const ShareSVG: any = ({ width, height, mailInfo }) => {
   return (
     <div className="help-text" title="Share">
       <a href={mailInfo}>
@@ -538,7 +550,6 @@ const ShareSVG: any = ({ width, height, onClickFunction, mailInfo }) => {
           height={height ? height : "2rem"}
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
-          onClick={onClickFunction}
         >
           <g
             id="Page-1"
@@ -576,6 +587,12 @@ const FavouriteSVG: any = ({ width, height, onClickFunction }) => {
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
         onClick={onClickFunction}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onClickFunction();
+          }
+        }}
+        tabIndex={0}
       >
         <path
           d="M19.57,5.44a4.91,4.91,0,0,1,0,6.93L12,20,4.43,12.37A4.91,4.91,0,0,1,7.87,4a4.9,4.9,0,0,1,3.44,1.44,4.46,4.46,0,0,1,.69.88,4.46,4.46,0,0,1,.69-.88,4.83,4.83,0,0,1,6.88,0Z"
@@ -603,6 +620,12 @@ const OpenSVG: any = ({ width, height, onClickFunction }) => {
         strokeWidth="5"
         fill="none"
         onClick={onClickFunction}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onClickFunction();
+          }
+        }}
+        tabIndex={0}
       >
         <path d="M55.4,32V53.58a1.81,1.81,0,0,1-1.82,1.82H10.42A1.81,1.81,0,0,1,8.6,53.58V10.42A1.81,1.81,0,0,1,10.42,8.6H32" />
         <polyline points="40.32 8.6 55.4 8.6 55.4 24.18" />
@@ -653,6 +676,12 @@ const CloseSVG: any = ({ width, height, onClickFunction }) => {
         viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
         onClick={onClickFunction}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            onClickFunction();
+          }
+        }}
+        tabIndex={0}
       >
         <path d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z" />
       </svg>

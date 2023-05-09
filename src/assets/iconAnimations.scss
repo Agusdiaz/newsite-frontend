@@ -63,6 +63,13 @@
     stroke: var(--border-color-navbar);
 }
 
+.tooltip-container:focus {
+    .settingAnimated {
+        transform: rotate(35deg);
+        stroke: var(--border-color-navbar);
+    }
+}
+
 .refresh-icon {
     fill: #000000;
     cursor: pointer;
@@ -77,6 +84,19 @@
     animation-duration: 1000ms;
     animation-iteration-count: 1;
     animation-name: spin;
+}
+
+.help-text.refresh:focus {
+    .refresh-icon {
+        fill: var(--limeGreen);
+        -webkit-transition: fill 0.7s ease-out;
+        -moz-transition: fill 0.7s ease-out;
+        -o-transition: fill 0.7s ease-out;
+        transition: fill 0.7s ease-out;
+        animation-duration: 1000ms;
+        animation-iteration-count: 1;
+        animation-name: spin;
+    }
 }
 
 @-ms-keyframes spin {
@@ -130,7 +150,8 @@
     }
 }
 
-.animated-actions:hover {
+.animated-actions:hover,
+.tooltip-actions-container:focus {
     animation: shake 500ms ease-in-out forwards;
 
     .cls-1 {

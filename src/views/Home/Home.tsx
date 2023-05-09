@@ -39,7 +39,7 @@ const Home = () => {
           <div className="home-container__information__rightInfo__subtitle-container">
             <img
               className="home-container__information__rightInfo__subtitle-container__avatar"
-              src={require("../../assets/me.jpg")}
+              src={require("../../assets/images/me.jpg")}
               alt="Owner avatar"
             />
             <p className="home-container__information__rightInfo__subtitle-container__subtitle">

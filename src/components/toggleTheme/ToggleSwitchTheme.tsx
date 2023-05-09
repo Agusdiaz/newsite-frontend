@@ -13,6 +13,13 @@ const ToggleSwitchTheme = () => {
     localStorage.setItem("theme", nextTheme);
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      setIsChecked(!isChecked);
+      handleTheme();
+    }
+  };
+
   return (
     <div className="toggleTheme-container">
       <input
@@ -27,7 +34,7 @@ const ToggleSwitchTheme = () => {
         htmlFor={isChecked ? "hide-checkbox--clicked" : "hide-checkbox"}
         className="toggle"
       >
-        <span className="toggle-button">
+        <span className="toggle-button" tabIndex={0} onKeyDown={handleKeyDown}>
           <span className="crater crater-1"></span>
         </span>
 

@@ -29,7 +29,7 @@
                 height: 15rem;
                 border-top-left-radius: 1rem;
                 border-top-right-radius: 1rem;
-                background-image: url('../../assets/profileBkg.jpg');
+                background-image: url('../../assets/images/profileBkg.jpg');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -150,7 +150,6 @@
     }
 
     .profile-container__card {
-
         &__images {
             min-height: 15rem;
 

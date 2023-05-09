@@ -22,6 +22,7 @@ const SearchBar = (props: { searchProps: SearchBarType }) => {
           className="search-box-container__btn"
           type="submit"
           onClick={onClickFunction}
+          tabIndex={0}
         >
           <i className="fa fa-search"></i>
         </button>
