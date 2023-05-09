@@ -32,7 +32,6 @@ body[data-theme="light"] {
     --text-color: var(--darkGrey);
     --background-color-profileInfo: var(--lightGrey);
     --svg-color: #000000;
-    --scrollbar-thumb-background: var(--shadow-color);
 }
 
 body[data-theme="dark"] {
@@ -43,7 +42,6 @@ body[data-theme="dark"] {
     --background-color-profileInfo: var(--mediumGrey);
     --text-color: #FFFFFF;
     --svg-color: #FFFFFF;
-    --scrollbar-thumb-background: #a9a1a1;
 }
 
 *,
@@ -78,10 +76,10 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb-background);
+    background-color: #a9a1a1;
     border-radius: 0.1875rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: var(--lightGrey);
+    background-color: var(--shadow-color);
 }

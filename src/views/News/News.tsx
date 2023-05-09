@@ -40,7 +40,9 @@ const News = () => {
             setShowModal(false);
           },
         }));
-      } else setNews(response.data);
+      } else setNews(response.data.sort(function (a, b) {
+        return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf();
+      }));
     });
   }, [setShowLoader, setModalProps, setShowModal]);
 
@@ -62,7 +64,9 @@ const News = () => {
             setShowModal(false);
           },
         }));
-      } else setNews(response.data);
+      } else setNews(response.data.sort(function (a, b) {
+        return new Date(b.createdAt).valueOf() - new Date(a.createdAt).valueOf();
+      }));
     });
   };
 

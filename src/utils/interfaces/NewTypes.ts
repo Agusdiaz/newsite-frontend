@@ -3,8 +3,8 @@ export type NewType = {
   createdAt: string;
   name: string;
   content: string;
-  image: string;
   creator: string;
+  image?: string;
 };
 
 export type SelectedNewType = {

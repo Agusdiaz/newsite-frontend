@@ -69,7 +69,6 @@ const Login = ({ imagePath, imageAlt }) => {
           userAvatar: localStorage.getItem("userAvatar"),
           userBirthdate: localStorage.getItem("userBirthdate"),
           userCountry: localStorage.getItem("userCountry"),
-          userSkills: localStorage.getItem("userSkills"),
         }));
         setIsAuthenticated(true);
         navigate("/home");

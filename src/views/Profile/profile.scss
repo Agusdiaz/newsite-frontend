@@ -1,105 +1,227 @@
+:root {
+    --profile-fontSize: 1.7rem;
+}
+
 .profile-container {
     width: 100%;
     display: flex;
-    overflow: auto;
-    padding: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 1rem 0.5rem;
 
-    &__info {
-        min-height: 20rem;
-        width: 75%;
-        min-width: 8rem;
-        margin: auto;
+    &__card {
+        width: 50%;
+        height: fit-content;
         border-radius: 1rem;
-        padding: 2rem;
         box-shadow: 1px 1px 10px 5px var(--shadow-color);
-        background: var(--background-color-profileInfo);
+        margin-right: 0.5rem;
         display: flex;
-        text-align: center;
-        align-items: center;
+        flex-direction: column;
+        background-color: #FFFFFF;
 
-        &__avatar {
-            height: 22rem;
-            margin-right: 1rem;
-        }
-
-        &__data {
-            width: 100%;
-            font-size: 1.2rem;
+        &__images {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            min-height: 21rem;
+            position: relative;
+
+            &__background {
+                height: 15rem;
+                border-top-left-radius: 1rem;
+                border-top-right-radius: 1rem;
+                background-image: url('../../assets/profileBkg.jpg');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                opacity: 0.78;
+            }
+
+            &__avatar {
+                width: 11rem;
+                border-radius: 50%;
+                margin: auto;
+                position: absolute;
+                top: 68%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &__info {
+            text-align: center;
+
+            p {
+                margin: 0 0.3rem;
+                font-size: calc(var(--profile-fontSize)* 0.7);
+                word-wrap: break-word;
+            }
 
             &__name {
-                font-size: 2.5rem;
-                font-weight: 600;
-                margin: 0;
+                font-size: var(--profile-fontSize) !important;
             }
 
-            &__skills {
-                margin-bottom: 0;
-            }
-
-            &__skills-container {
+            &__line {
                 width: 100%;
+                border: 1px solid var(--background-color-navbar);
+                margin: 1.5rem 0;
+            }
+
+            &__other {
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+                justify-content: space-around;
+                align-items: flex-start;
+                margin-bottom: 1rem;
+
+                p {
+                    width: 33%;
+                }
+            }
+        }
+    }
+
+    &__news {
+        width: 50%;
+        height: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+
+        &__header {
+            font-size: calc(var(--profile-fontSize)* 0.7);
+            margin: 0;
+        }
+
+        &__holder {
+
+            &__empty-news {
+                display: flex;
+                flex-direction: column;
+
+                &__pic {
+                    width: 13rem;
+                    height: 13rem;
+                    margin: auto;
+                    margin-top: 2rem;
+                }
+
+                &__title {
+                    font-size: calc(var(--profile-fontSize) * 0.6);
+                    font-weight: 500;
+                    margin: auto;
+                    text-align: center;
+                    margin: 0 2rem 2rem;
+                }
+            }
+
+            &__slider {
+                display: flex;
+                flex-direction: column;
+                margin-top: 1rem;
                 align-items: center;
 
-                .skill-badge {
-                    border: 3px solid var(--limeGreen);
-                    padding: 0.2rem 1rem;
-                    background: var(--yellowGreen);
-                    margin: 0.2rem 1rem;
-                    border-radius: 0.3rem;
-                    box-shadow: 1px 1px 10px 5px var(--shadow-color);
-                    transition: all 500ms;
-
-                    &:hover {
-                        padding: 0.5rem 1.3rem;
-                        background-color: var(--limeGreen);
-                        color: white;
-                    }
+                .card-container {
+                    width: 95%;
                 }
             }
         }
     }
 }
 
-@media only screen and (max-width: 992px) {
-    .profile-container__info {
-        flex-direction: column;
+@media only screen and (max-width: 600px) {
+    .profile-container {
+        display: block;
 
-        &__avatar {
-            width: auto;
-            height: 16rem;
-            margin: 0 0 1rem 0;
+        &__card {
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 1rem;
         }
 
-        &__data {
-            font-size: 1rem;
-
-            &__name {
-                font-size: 2rem;
-            }
+        &__news {
+            width: 100%;
+            height: auto;
         }
     }
 }
 
 @media only screen and (max-width: 400px) {
-    .profile-container__info {
+    :root {
+        --profile-fontSize: 1.3rem;
+    }
 
-        &__avatar {
-            width: 100%;
-            height: auto;
+    .profile-container__card {
+
+        &__images {
+            min-height: 15rem;
+
+            &__background {
+                height: 10rem;
+            }
+
+            &__avatar {
+                width: 8rem;
+            }
         }
 
-        &__data {
-            font-size: 0.6rem;
+        &__info {
 
-            &__name {
-                font-size: 1.2rem;
+            &__other {
+                flex-direction: column;
+                align-items: center;
+
+                p {
+                    margin: 0.3rem;
+                    width: 100%;
+                }
+            }
+
+            &__line {
+                margin: 0.5rem 0;
+            }
+        }
+    }
+
+    .profile-container__news__holder {
+        &__empty-news {
+
+            &__pic {
+                width: 7rem;
+                height: 7rem;
+                margin: auto;
+                margin-top: 2rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 240px) {
+    :root {
+        --profile-fontSize: 0.8rem;
+    }
+
+    .profile-container {
+        &__card__images {
+            min-height: 8rem;
+
+            &__background {
+                height: 6rem;
+            }
+
+            &__avatar {
+                width: 4rem;
+                top: 74%;
+            }
+        }
+
+        &__news__holder__empty-news {
+
+            &__pic {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            &__title {
+                margin: 0;
             }
         }
     }

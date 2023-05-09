@@ -5,5 +5,4 @@ export type UserType = {
   userAvatar: string;
   userCountry: string;
   userBirthdate: string;
-  userSkills: string;
 };

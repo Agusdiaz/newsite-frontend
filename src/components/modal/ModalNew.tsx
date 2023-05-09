@@ -9,7 +9,7 @@ import {
   PersonSVG,
   ShareSVG,
 } from "../../assets/iconsSVG";
-import formatDate from "../../utils/formatDate";
+import { formatDate } from "../../utils/formatters";
 import { ScreenContext } from "../../context/screenContext";
 import { UserContext } from "../../context/userContext";
 
@@ -66,12 +66,11 @@ const ModalNew = (props: { selectedNewProps: SelectedNewType }) => {
         <ShareSVG
           width={actionIconSize * 0.8 + "rem"}
           height={actionIconSize * 0.8 + "rem"}
-          mailInfo={`mailto:email@example.com?subject=${
-            user.userName
-          } has shared a news with you&body=Name: ${name}%0D%0AContent: ${content}%0D%0ACreated By: ${creator}%0D%0ACreated At: ${formatDate(
-            createdAt,
-            true
-          )}%0D%0A%0D%0APlease, visit out News Site for more information :)%0D%0A%0D%0A`}
+          mailInfo={`mailto:email@example.com?subject=${user.userName
+            } has shared a news with you&body=Name: ${name}%0D%0AContent: ${content}%0D%0ACreated By: ${creator}%0D%0ACreated At: ${formatDate(
+              createdAt,
+              true
+            )}%0D%0A%0D%0APlease, visit out News Site for more information :)%0D%0A%0D%0A`}
         />
         <CloseSVG
           width={actionIconSize * 1.2 + "rem"}
@@ -82,7 +81,7 @@ const ModalNew = (props: { selectedNewProps: SelectedNewType }) => {
       <div className="modal-new-container__info">
         <img
           className="modal-new-container__info__pic"
-          src={image}
+          src={image ? image : require("../../assets/noPhoto.png")}
           alt="Card illustration"
         />
         <div className="modal-new-container__info__texts">

@@ -30,7 +30,6 @@ const Tooltip = ({ children }) => {
       userAvatar: "",
       userBirthdate: "",
       userCountry: "",
-      userSkills: [],
       theme: null,
     }));
     setIsAuthenticated(false);

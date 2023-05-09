@@ -26,9 +26,6 @@ const UserProvider = ({ children }) => {
     userBirthdate: localStorage.getItem("userBirthdate")
       ? localStorage.getItem("userBirthdate")
       : "",
-    userSkills: localStorage.getItem("userSkills")
-      ? localStorage.getItem("userSkills")
-      : "",
   });
 
   return (

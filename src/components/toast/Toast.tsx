@@ -18,7 +18,7 @@ const Toast = (props: { toastProps: ToastType }) => {
       if (showToast) {
         closeToast();
       }
-    }, 8000);
+    }, 3000);
 
     return () => {
       clearInterval(interval);
