@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { ActionsSVG } from "../../assets/iconAnimations";
 import { CalendarSVG, PersonSVG } from "../../assets/iconsSVG";
 import { formatDate } from "../../utils/formatters";
@@ -12,6 +12,8 @@ const Card = (props: { cardProps: NewType }) => {
   const { setShowModalNew, setSelectedNewProps } = useContext(ScreenContext);
   const { user } = useContext(UserContext);
 
+  const ref: any = useRef();
+
   const { id, name, content, createdAt, creator, image } = props.cardProps;
 
   const openNew = () => {
@@ -24,13 +26,14 @@ const Card = (props: { cardProps: NewType }) => {
       creator,
       closeModal: () => {
         setShowModalNew(false);
+        ref.current.focus();
       },
     }));
     setShowModalNew(true);
   };
 
   return (
-    <div className="card-container" key={id} tabIndex={0}>
+    <div className="card-container" key={id} tabIndex={0} ref={ref}>
       <div className="card-container__actions">
         <TooltipActions
           openNew={openNew}
@@ -40,6 +43,7 @@ const Card = (props: { cardProps: NewType }) => {
             createdAt,
             true
           )}%0D%0A%0D%0APlease, visit out News Site for more information :)%0D%0A%0D%0A`}
+          parentRef={ref}
         >
           <ActionsSVG />
         </TooltipActions>

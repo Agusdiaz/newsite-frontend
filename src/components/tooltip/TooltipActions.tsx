@@ -3,7 +3,7 @@ import { FavouriteSVG, OpenSVG, ShareSVG } from "../../assets/iconsSVG";
 import { ScreenContext } from "../../context/screenContext";
 import "./tooltipActions.scss";
 
-const TooltipActions = ({ children, openNew, mailInfo }) => {
+const TooltipActions = ({ children, openNew, mailInfo, parentRef }) => {
   const { setShowToast, setToastProps } = useContext(ScreenContext);
 
   const setFavourite = () => {
@@ -13,6 +13,7 @@ const TooltipActions = ({ children, openNew, mailInfo }) => {
       type: "info",
       closeToast: () => {
         setShowToast(false);
+        parentRef.current.focus();
       },
     }));
     setShowToast(true);
