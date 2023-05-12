@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Introduction 🤝
+The aim of this project is to improve my front-end abilities. So don't focus on the content of the website, but on the design and layout. I am using [MOCKAPI]() to simulate a back-end service.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The main technologies that I am using are: [React](https://es.react.dev/), [Typescript](https://www.typescriptlang.org/), HTML and [SCSS](https://sass-lang.com/). Every component is made from scratch, without the help of any UI library. I developed a dark and light theme. Also, the whole website is 100% responsive.
+# Getting Started 🚀
+1. Click the _"Clone"_ button to copy the link (HTTPS).
+2. _git clone link_you_just_copied_.
+3. _npm install_ (to install all the neccesary dependencies).
+4. _npm start_ (to start running).
 
-## Available Scripts
+**_NOTE:_** Before running, you MUST have __.env__ file on your root folder, to set your environment variables. Once created, add the following:
+```
+REACT_APP_API_BACKEND=https://60b4f09dfe923b0017c832e4.mockapi.io
+```
+# About the Structure 🛠️
+Below is a brief explanation of what is inside each folder:
+- **public:** contains the HTML structure, the name and logo of the website.
+- **src:** it is the folder that contains the source code of the app.
+    - **__tests__:** where all the unit tests are stored.
+    - **assets:** everything that has to do with images, svgs and icons.
+    - **components:** React components that are going to be reused in other components/views.
+    - **context:** stores all the React context files that are used across multiple pages, like a global data store.
+    - **hooks:** contains custom hooks, to use them in other components/views.
+    - **services:** the connection with the back-end service, through endpoints.
+    - **styles:** where is the global style of the website.
+    - **utils:** utility functions (such as formatters) that are used across multiple components/views.
+    - **views:** contains higher-level components responsible for rendering specific pages or sections of the app.
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Next Steps 🔜
+As mentioned before, MOCKAPI is the platform I am using to generate all the data. That is why, in the future, I will develop a full back-end service to support this website.
