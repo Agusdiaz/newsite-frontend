@@ -7,12 +7,14 @@ import { ScreenContext } from "../../context/screenContext";
 import { getNews } from "../../services/news/newsService";
 import { ModalError } from "../../utils//interfaces/ModalTypes";
 import { NewType } from "../../utils/interfaces/NewTypes";
+import CardSkeleton from "../../components/skeletons/CardSkeleton";
 import "./news.scss";
 
 const News = () => {
   const [news, setNews] = useState<Array<NewType>>(null);
   const [matchedNews, setMatchedNews] = useState<Array<NewType>>([]);
   const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const { setShowLoader, setShowModal, setModalProps, windowSize } =
     useContext(ScreenContext);
@@ -23,9 +25,9 @@ const News = () => {
   }, [searchText]);
 
   useEffect(() => {
-    setShowLoader(true);
+    setIsLoading(true);
     getNews().then((response) => {
-      setShowLoader(false);
+      setIsLoading(false);
       if (response.error) {
         setShowModal(true);
         setModalProps(() => ({
@@ -49,7 +51,7 @@ const News = () => {
           })
         );
     });
-  }, [setShowLoader, setModalProps, setShowModal]);
+  }, [setModalProps, setShowModal]);
 
   const handleRefresh = () => {
     setShowLoader(true);
@@ -91,6 +93,14 @@ const News = () => {
     } else setMatchedNews([]);
   };
 
+  const showSkeletons = () => {
+    const skeletons = [];
+    for (let i = 0; i <= 5; i++) {
+      skeletons.push(<CardSkeleton key={i} />);
+    }
+    return skeletons;
+  };
+
   return (
     <div className="news-container-all">
       <div className="news-top">
@@ -110,7 +120,7 @@ const News = () => {
         </div>
       </div>
       <div className="news-container">
-        {news === null || news.length === 0 ? (
+        {!isLoading && (news === null || news.length === 0) ? (
           <div className="empty-news">
             <img
               className="empty-news__pic"
@@ -122,7 +132,7 @@ const News = () => {
               while.
             </p>
           </div>
-        ) : searchText.length > 0 && matchedNews.length > 0 ? (
+        ) : !isLoading && searchText.length > 0 && matchedNews.length > 0 ? (
           <div className="news-container__slider">
             {matchedNews.map((el, index) => {
               return (
@@ -140,7 +150,7 @@ const News = () => {
               );
             })}
           </div>
-        ) : searchText.length > 0 && matchedNews.length === 0 ? (
+        ) : !isLoading && searchText.length > 0 && matchedNews.length === 0 ? (
           <div className="not-matched-news">
             <EmptySearchSVG
               width={windowSize[0] > 400 ? "8rem" : "4rem"}
@@ -152,21 +162,23 @@ const News = () => {
           </div>
         ) : (
           <div className="news-container__slider">
-            {news.map((el, index) => {
-              return (
-                <Card
-                  key={index}
-                  cardProps={{
-                    id: el.id,
-                    name: el.name,
-                    content: el.content,
-                    createdAt: el.createdAt,
-                    creator: el.creator,
-                    image: el.image,
-                  }}
-                />
-              );
-            })}
+            {isLoading
+              ? showSkeletons()
+              : news.map((el, index) => {
+                  return (
+                    <Card
+                      key={index}
+                      cardProps={{
+                        id: el.id,
+                        name: el.name,
+                        content: el.content,
+                        createdAt: el.createdAt,
+                        creator: el.creator,
+                        image: el.image,
+                      }}
+                    />
+                  );
+                })}
           </div>
         )}
       </div>

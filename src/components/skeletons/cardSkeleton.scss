@@ -1,0 +1,72 @@
+.card-skeleton-container {
+    width: 49%;
+    height: 20rem;
+    border-radius: 1rem;
+    box-shadow: 4px 4px 18px 1px var(--shadow-color);
+    margin: 0 0rem 1rem;
+    transition: transform .2s;
+    background-color: #FFFFFF;
+
+    &__actions {
+        padding-left: 1rem;
+        height: 2rem;
+    }
+
+    &__pic {
+        height: 50%;
+        border-radius: 0.25rem;
+    }
+
+    &__content {
+        width: 100%;
+        padding: 0 0.5rem 0.5rem 0.5rem;
+
+        &__title,
+        &__creator,
+        &__date {
+            height: 1rem;
+            margin: 0.5rem;
+            border-radius: 0.25rem;
+        }
+
+        &__body {
+            height: 3.5rem;
+            border-radius: 0.25rem;
+        }
+
+        &__bottom-data {
+            display: flex;
+        }
+
+        &__bottom-data-half {
+            display: flex;
+            align-items: center;
+            width: 50%;
+        }
+
+        &__creator,
+        &__date {
+            width: 100%;
+        }
+    }
+}
+
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@media only screen and (max-width: 1472px) {
+    .card-skeleton-container {
+        width: 95%;
+    }
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: hsl(200, 20%, 80%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}

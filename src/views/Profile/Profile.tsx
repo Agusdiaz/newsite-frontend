@@ -1,24 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/userContext";
 import { formatDate, formatNumber } from "../../utils/formatters";
-import "./profile.scss";
 import Card from "../../components/card/Card";
 import { NewType } from "../../utils/interfaces/NewTypes";
 import { ScreenContext } from "../../context/screenContext";
 import { getNews } from "../../services/news/newsService";
 import { ModalError } from "../../utils/interfaces/ModalTypes";
+import CardSkeleton from "../../components/skeletons/CardSkeleton";
+import "./profile.scss";
 
 const Profile = () => {
   const { user } = useContext(UserContext);
-  const { setShowLoader, setShowModal, setModalProps } =
-    useContext(ScreenContext);
+  const { setShowModal, setModalProps } = useContext(ScreenContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [news, setNews] = useState<Array<NewType>>(null);
 
   useEffect(() => {
-    setShowLoader(true);
+    setIsLoading(true);
     getNews().then((response) => {
-      setShowLoader(false);
+      setIsLoading(false);
       if (response.error) {
         setShowModal(true);
         setModalProps(() => ({
@@ -47,7 +48,15 @@ const Profile = () => {
         );
       }
     });
-  }, [setShowLoader, setModalProps, setShowModal, user.userEmail]);
+  }, [setModalProps, setShowModal, user.userEmail]);
+
+  const showSkeletons = () => {
+    const skeletons = [];
+    for (let i = 0; i <= 1; i++) {
+      skeletons.push(<CardSkeleton key={i} />);
+    }
+    return skeletons;
+  };
 
   return (
     <div className="profile-container">
@@ -56,7 +65,11 @@ const Profile = () => {
           <div className="profile-container__card__images__background"></div>
           <img
             className="profile-container__card__images__avatar"
-            src={user.userAvatar}
+            src={
+              user.userAvatar
+                ? user.userAvatar
+                : require("../../assets/images/noPhoto.png")
+            }
             alt="Profile avatar"
           />
         </div>
@@ -86,7 +99,7 @@ const Profile = () => {
           Here are the news you posted:
         </p>
         <div className="profile-container__news__holder">
-          {news === null || news.length === 0 ? (
+          {!isLoading && (news === null || news.length === 0) ? (
             <div className="profile-container__news__holder__empty-news">
               <img
                 className="profile-container__news__holder__empty-news__pic"
@@ -99,21 +112,23 @@ const Profile = () => {
             </div>
           ) : (
             <div className="profile-container__news__holder__slider">
-              {news.map((el, index) => {
-                return (
-                  <Card
-                    key={index}
-                    cardProps={{
-                      id: el.id,
-                      name: el.name,
-                      content: el.content,
-                      createdAt: el.createdAt,
-                      creator: el.creator,
-                      image: el.image,
-                    }}
-                  />
-                );
-              })}
+              {isLoading
+                ? showSkeletons()
+                : news.map((el, index) => {
+                    return (
+                      <Card
+                        key={index}
+                        cardProps={{
+                          id: el.id,
+                          name: el.name,
+                          content: el.content,
+                          createdAt: el.createdAt,
+                          creator: el.creator,
+                          image: el.image,
+                        }}
+                      />
+                    );
+                  })}
             </div>
           )}
         </div>
